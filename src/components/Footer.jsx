@@ -58,7 +58,7 @@ export default function Footer() {
   return (
     <footer style={{ background: '#1A1A1A', borderTop: '3px solid #FF6A00' }} className="mt-24">
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div>
             <div className="font-display font-bold text-2xl mb-3" style={{ color: 'white', letterSpacing: '-0.02em', fontWeight: 800 }}>
@@ -100,6 +100,18 @@ export default function Footer() {
             <h4 className="font-display font-semibold mb-4 text-sm" style={{ color: 'rgba(255,255,255,0.90)' }}>Company</h4>
             <div className="flex flex-col gap-2.5">
               {[['Our Team', '/#team'], ['Reviews', '/#reviews'], ['Contact', '/contact']].map(([l, to]) => (
+                <Link key={to} to={to} className="text-sm transition-colors" style={{ color: 'rgba(255,255,255,0.5)' }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.90)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>{l}</Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="font-display font-semibold mb-4 text-sm" style={{ color: 'rgba(255,255,255,0.90)' }}>Legal</h4>
+            <div className="flex flex-col gap-2.5">
+              {[['Company Information', '/legal'], ['Terms of Service', '/terms'], ['Privacy Policy', '/privacy'], ['Refund and Delivery Policy', '/refund-policy']].map(([l, to]) => (
                 <Link key={to} to={to} className="text-sm transition-colors" style={{ color: 'rgba(255,255,255,0.5)' }}
                   onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.90)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>{l}</Link>
@@ -168,8 +180,22 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <span className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
             <span onClick={handleSecretTap} style={{ userSelect: 'none' }}>©</span>
-            {' 2026 Echorise Media. All rights reserved.'}
+            {' 2026 Echorise Media, Inc. All rights reserved.'}
           </span>
+          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+            <Link to="/legal" className="transition-colors" style={{ color: 'rgba(255,255,255,0.35)' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}>Company Information</Link>
+            <Link to="/terms" className="transition-colors" style={{ color: 'rgba(255,255,255,0.35)' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}>Terms</Link>
+            <Link to="/privacy" className="transition-colors" style={{ color: 'rgba(255,255,255,0.35)' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}>Privacy</Link>
+            <Link to="/refund-policy" className="transition-colors" style={{ color: 'rgba(255,255,255,0.35)' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}>Refund Policy</Link>
+          </div>
           <span className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>Built for artists who refuse to go unheard.</span>
         </div>
       </div>

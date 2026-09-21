@@ -5,9 +5,17 @@
 // All Brevo calls go through /.netlify/functions/send-email (server-side).
 // On Netlify → Site configuration → Environment variables → add BREVO_API_KEY
 // (NO VITE_ prefix — that would expose it in the client bundle)
+//
+// NOTE: legal_name and legal_url are now sent as params on every invoice
+// email (see sendInvoiceEmail below). The Brevo template itself lives in
+// the Brevo dashboard, not in this codebase, so add {{ params.legal_name }}
+// to the template where you want the registered legal name to appear
+// (for example, in the invoice footer) for it to actually show up on the
+// email.
 
 const BASE_URL = 'https://echorisemedia.com'
 const SENDER   = { name: 'Echorise Media', email: 'support@echorisemedia.com' }
+const LEGAL_NAME = 'Echorise Media, Inc.'
 
 // ── Formspree — owner notification helper ────────────────────────────────────
 export async function notifyOwner(formId, payload) {
@@ -76,6 +84,8 @@ export async function sendInvoiceEmail(p) {
       order_url:      `${BASE_URL}/order`,
       contact_url:    `${BASE_URL}/contact`,
       support_email:  'support@echorisemedia.com',
+      legal_name:     LEGAL_NAME,
+      legal_url:      `${BASE_URL}/legal`,
     },
   })
 }

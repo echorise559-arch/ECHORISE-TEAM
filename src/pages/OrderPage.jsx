@@ -1,5 +1,6 @@
 import useSEO from '../hooks/useSEO'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { COUNTRIES, PLATFORMS, SPOTIFY_PACKAGES, SOUNDCLOUD_PACKAGES, CHART_PACKAGES, DANCE_PACKAGES } from '../data'
 import PageHero from '../components/PageHero'
 
@@ -11,7 +12,7 @@ const ALL_PACKAGES = [
   { id: 'custom', name: 'Custom', price: 0, label: 'Custom Campaign', category: 'Custom', features: [], paymentLink: '' },
 ]
 
-const INIT = { artistName: '', email: '', trackLink: '', platform: '', package: '', country: '', notes: '' }
+const INIT = { artistName: '', email: '', trackLink: '', platform: '', package: '', country: '', notes: '', agreeTerms: false }
 
 // ── Main Order Page ───────────────────────────────────────────────────────────
 export default function OrderPage() {
@@ -33,6 +34,7 @@ export default function OrderPage() {
     if (!form.platform) e.platform = 'Required'
     if (!form.package) e.package = 'Required'
     if (!form.country) e.country = 'Required'
+    if (!form.agreeTerms) e.agreeTerms = 'You must agree to continue'
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -112,6 +114,27 @@ export default function OrderPage() {
                   <textarea name="notes" className="form-input resize-none" rows={3} placeholder="Target genre, specific markets, campaign goals, release date…" value={form.notes} onChange={e => set('notes', e.target.value)} />
                 </div>
               </div>
+
+              <div className="mt-5">
+                <label className="flex items-start gap-2.5 text-sm cursor-pointer" style={{ color: '#6B6B6B' }}>
+                  <input
+                    type="checkbox"
+                    name="agreeTerms"
+                    checked={form.agreeTerms}
+                    onChange={e => set('agreeTerms', e.target.checked)}
+                    className="mt-0.5 flex-shrink-0"
+                    style={{ width: 16, height: 16, accentColor: '#FF6A00' }}
+                  />
+                  <span>
+                    I agree to the{' '}
+                    <Link to="/terms" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#FF6A00' }}>Terms of Service</Link>
+                    {' '}and{' '}
+                    <Link to="/refund-policy" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#FF6A00' }}>Refund Policy</Link>
+                  </span>
+                </label>
+                {errors.agreeTerms && <p className="text-red-400 text-xs mt-1">{errors.agreeTerms}</p>}
+              </div>
+
               <button type="submit" className="btn-primary w-full justify-center mt-6 py-4 text-base">Proceed to Payment →</button>
               {linkError && (
                 <p className="text-red-400 text-xs text-center mt-3">{linkError}</p>
