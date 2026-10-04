@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { Play, BadgeCheck } from 'lucide-react'
+import { Play, BadgeCheck, ShieldCheck, Users, BarChart3 } from 'lucide-react'
 import { VIDEO_TESTIMONIALS } from '../data'
 
 // Cloudinary's hosted Video Player (player.cloudinary.com/embed/...) is an
@@ -90,6 +90,26 @@ function VideoCard({ item, index }) {
   )
 }
 
+// Plain-language backing for the "organic" claim. Each point restates what the
+// site already promises elsewhere (FAQ, Trust section), so nothing new is claimed.
+const ORGANIC_POINTS = [
+  {
+    Icon: Users,
+    title: 'Real people, real placements',
+    text: 'Your track is pitched by hand to genuine curators, bloggers and listener communities that match your genre.',
+  },
+  {
+    Icon: ShieldCheck,
+    title: 'No bots. No artificial streaming.',
+    text: 'We never use bot accounts, stream farms or purchased plays. They put your artist profile at risk and they are not what the artists in these videos paid for.',
+  },
+  {
+    Icon: BarChart3,
+    title: 'Check it in your own data',
+    text: 'Organic growth is visible in your analytics: listeners from varied locations, saves, follows and playlist adds, not one flat wall of plays.',
+  },
+]
+
 export default function VideoTestimonials() {
   if (!VIDEO_TESTIMONIALS || VIDEO_TESTIMONIALS.length === 0) return null
 
@@ -108,6 +128,13 @@ export default function VideoTestimonials() {
           <p className="max-w-md mx-auto" style={{ color: '#6B6B6B' }}>
             Real video reviews from artists we've worked with. Names are kept private.
           </p>
+          <div
+            className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full text-xs font-display font-bold tracking-widest uppercase"
+            style={{ background: 'rgba(29,185,84,0.10)', border: '1.5px solid rgba(29,185,84,0.30)', color: '#14873D' }}
+          >
+            <ShieldCheck size={16} strokeWidth={2.2} aria-hidden="true" />
+            100% Organic Outreach · No Bots
+          </div>
         </div>
 
         {/* Equal-width phone frames, centred, so 1, 2, 3 or more videos always look balanced */}
@@ -115,6 +142,36 @@ export default function VideoTestimonials() {
           {VIDEO_TESTIMONIALS.map((item, i) => (
             <VideoCard key={item.id} item={item} index={i} />
           ))}
+        </div>
+
+        {/* Why these results are organic */}
+        <div
+          className="mt-16 rounded-3xl p-8 md:p-10"
+          style={{ background: '#FAF7F2', border: '1.5px solid rgba(29,185,84,0.22)' }}
+        >
+          <h3
+            className="font-display font-bold text-2xl text-center mb-8"
+            style={{ color: '#1A1A1A', letterSpacing: '-0.02em', fontFamily: 'Syne, sans-serif' }}
+          >
+            Why these results are <span style={{ color: '#14873D' }}>genuinely organic</span>
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {ORGANIC_POINTS.map(({ Icon, title, text }) => (
+              <div key={title} className="flex flex-col items-center text-center">
+                <span
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4"
+                  style={{ background: 'rgba(29,185,84,0.12)', border: '1.5px solid rgba(29,185,84,0.28)', color: '#14873D' }}
+                >
+                  <Icon size={22} strokeWidth={2} aria-hidden="true" />
+                </span>
+                <div className="font-display font-bold text-base mb-2" style={{ color: '#1A1A1A' }}>{title}</div>
+                <p className="text-sm leading-relaxed" style={{ color: '#6B6B6B' }}>{text}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-center mt-8" style={{ color: 'rgba(107,107,107,0.90)' }}>
+            Every campaign follows each platform's terms of service. If we miss the promised numbers, we top up your campaign or refund you.
+          </p>
         </div>
       </div>
     </section>

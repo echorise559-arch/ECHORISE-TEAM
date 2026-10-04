@@ -5,11 +5,11 @@ import ModalPortal from './ModalPortal'
 
 const SERVICES_LIST = [
   'Spotify Promotion – Starter ($50)',
-  'Spotify Promotion – Growth ($100)',
-  'Spotify Promotion – Premium ($350)',
+  'Spotify Promotion – Growth ($150)',
+  'Spotify Promotion – Premium ($190)',
   'SoundCloud Promotion – Starter ($50)',
-  'SoundCloud Promotion – Growth ($100)',
-  'SoundCloud Promotion – Premium ($350)',
+  'SoundCloud Promotion – Growth ($150)',
+  'SoundCloud Promotion – Premium ($190)',
   'Chart Promotion – Starter ($150)',
   'Chart Promotion – Growth ($350)',
   'Chart Promotion – Premium ($650)',

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import PageHero from '../components/PageHero'
 import { notifyOwner } from '../utils/brevo'
 import ContactButtons from '../components/ContactButtons'
+import CallPolicy from '../components/CallPolicy'
 
 const MailIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
@@ -145,6 +146,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <CallPolicy showCta={false} />
     </>
   )
 }

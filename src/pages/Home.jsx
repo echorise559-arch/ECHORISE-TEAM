@@ -12,6 +12,7 @@ import FAQSection from '../components/FAQSection'
 import PartnerLogos from '../components/PartnerLogos'
 import TopArtists from '../components/TopArtists'
 import VideoTestimonials from '../components/VideoTestimonials'
+import CallPolicy from '../components/CallPolicy'
 import { SPOTIFY_PACKAGES, REVIEWS } from '../data'
 
 /* ── Platform SVG Icons ─────────────────────────────────────────── */
@@ -315,6 +316,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── VIDEO TESTIMONIALS (directly after the first package list) ── */}
+      <VideoTestimonials />
+
       {/* ── STATS ── */}
       <div className="py-6"><StatsBar /></div>
 
@@ -432,9 +436,6 @@ export default function Home() {
       {/* ── TEAM ── */}
       <TeamSection />
 
-      {/* ── VIDEO TESTIMONIALS ── */}
-      <VideoTestimonials />
-
       {/* ── REVIEWS ── */}
       <section className="py-24 px-6" id="reviews" style={{ background: '#F3EFEA' }}>
         <div className="max-w-6xl mx-auto">
@@ -448,6 +449,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── CALL POLICY ── */}
+      <CallPolicy />
 
       {/* ── FAQ ── */}
       <FAQSection />
