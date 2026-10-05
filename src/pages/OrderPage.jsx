@@ -78,8 +78,15 @@ export default function OrderPage() {
         setNotice(`Your request was sent to our team. We will email a quote and payment link to ${form.email} within 24 hours.`)
       }
     } catch (err) {
-      if (payWin) payWin.close()
-      setSendError(err.message)
+      if (link) {
+        // The notification email failed, but the buyer must always be able to pay.
+        if (payWin) payWin.location.href = link
+        else window.location.assign(link)
+        setNotice('Complete your payment in the new tab.')
+      } else {
+        if (payWin) payWin.close()
+        setSendError(err.message)
+      }
     } finally {
       setSending(false)
     }
