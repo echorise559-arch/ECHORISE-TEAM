@@ -124,6 +124,7 @@ export default function Footer() {
             <h4 className="font-display font-semibold mb-4 text-sm" style={{ color: 'rgba(255,255,255,0.90)' }}>Contact</h4>
             <div className="flex flex-col gap-2.5">
               <a href="mailto:support@echorisemedia.com" className="text-sm transition-colors" style={{ color: '#FF8C3A' }}>support@echorisemedia.com</a>
+              <a href="mailto:hello@echorisemedia.com" className="text-sm transition-colors" style={{ color: '#FF8C3A' }}>hello@echorisemedia.com</a>
               <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>Response within 24 hours</span>
               <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>Mon – Fri, 9am – 6pm GMT</span>
             </div>

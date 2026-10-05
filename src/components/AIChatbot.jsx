@@ -10,12 +10,12 @@ const KB = [
   {
     key: 'spotify',
     patterns: ['spotify', 'monthly listeners', 'spotify listeners', 'spotify promotion', 'spotify plan', 'spotify package', 'streams', 'stream count'],
-    response: " **Spotify Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted listeners\n• Genre-matched audience\n• Campaign live within 48hrs\n• Completion report\n\n**Growth — $150**  Most Popular\n• 30,000 targeted listeners\n• Advanced genre targeting\n• Algorithm boost strategy\n• Campaign live within 24hrs\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted listeners\n• Global multi-genre reach\n• Full viral push strategy\n• Campaign live within 12hrs\n• Priority support + consultation\n\n**Custom — $50–$10,000**\n• Bespoke strategy for any goal\n\n All listeners are 100% real — no bots, fully ToS-compliant.\n\nWhich package fits your budget?"
+    response: " **Spotify Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted listeners\n• Genre-matched audience\n• Campaign live within 72hrs\n• Completion report\n\n**Growth — $120**  Most Popular\n• 25,000 targeted listeners\n• Advanced genre targeting\n• Algorithm boost strategy\n• Campaign live within 48hrs\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted listeners\n• Global multi-genre reach\n• Genre-matched, broad-interest listeners\n• Continuous interaction & engagement\n• Full viral push strategy\n• Campaign live within 24hrs\n• Priority support + consultation\n\n**Custom — $50–$10,000**\n• Bespoke strategy for any goal\n\n All listeners are 100% real — no bots, fully ToS-compliant.\n\nWhich package fits your budget?"
   },
   {
     key: 'soundcloud',
     patterns: ['soundcloud', 'sound cloud', 'sc plays', 'soundcloud plays', 'soundcloud promotion', 'soundcloud package'],
-    response: " **SoundCloud Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted plays\n• Genre-matched listeners\n• Community reposts\n• Completion report\n\n**Growth — $150**  Most Popular\n• 30,000 targeted plays\n• Follower growth included\n• Priority channel placement\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted plays\n• Accelerated follower growth\n• Premium reposts network\n• Priority support\n\n All plays from real SoundCloud accounts — no bots.\n\nWhich one works for you?"
+    response: " **SoundCloud Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted plays\n• Genre-matched listeners\n• Community reposts\n• Completion report\n\n**Growth — $120**  Most Popular\n• 25,000 targeted plays\n• Follower growth included\n• Priority channel placement\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted plays\n• Genre-matched, broad-interest listeners\n• Continuous interaction & engagement\n• Accelerated follower growth\n• Premium reposts network\n• Priority support\n\n All plays from real SoundCloud accounts — no bots.\n\nWhich one works for you?"
   },
   {
     key: 'chart',
@@ -40,17 +40,17 @@ const KB = [
   {
     key: 'pricing',
     patterns: ['price', 'pricing', 'cost', 'how much', 'rates', 'fee', 'affordable', 'budget', 'packages', 'plans', 'what do you offer', 'all packages', 'all plans'],
-    response: " **Echorise Media — Full Price Overview**\n\n **Spotify** — $50 / $150 / $190 / Custom\n **SoundCloud** — $50 / $150 / $190\n **Chart Promotion** — $150 / $250 / $2,200 / $3,500\n **Dance/TikTok** — $150 / $300 / $1,000\n **YouTube** — Custom ($50–$10,000)\n **Apple Music** — Custom ($50–$10,000)\n\n For new artists, we recommend starting with **Spotify Growth at $150** — most popular, best value, real results.\n\nWhich platform are you most focused on?"
+    response: " **Echorise Media — Full Price Overview**\n\n **Spotify** — $50 / $120 / $190 / Custom\n **SoundCloud** — $50 / $120 / $190\n **Chart Promotion** — $150 / $250 / $2,200 / $3,500\n **Dance/TikTok** — $150 / $300 / $1,000\n **YouTube** — Custom ($50–$10,000)\n **Apple Music** — Custom ($50–$10,000)\n\n For new artists, we recommend starting with **Spotify Growth at $120** — most popular, best value, real results.\n\nWhich platform are you most focused on?"
   },
   {
     key: 'payment',
     patterns: ['payment', 'how to pay', 'payment method', 'bank transfer', 'mobile money', 'ussd', 'currency', 'naira', 'dollar', 'pound', 'pay now', 'checkout'],
-    response: " **How Payment Works**\n\nWe accept multiple secure payment methods:\n\n•  Visa & Mastercard (credit/debit)\n•  Bank Transfer\n•  Mobile Money (MTN, Airtel, M-Pesa etc.)\n•  USSD\n\n**Currencies:** USD, GBP, EUR, NGN, GHS, KES, and more.\n\n**After payment:**\n Confirmation receipt sent to your email\n Campaign starts within 12–48hrs\n\n 256-bit SSL encrypted — fully secure."
+    response: " **How Payment Works**\n\nWe accept multiple secure payment methods:\n\n•  Visa & Mastercard (credit/debit)\n•  Bank Transfer\n•  Mobile Money (MTN, Airtel, M-Pesa etc.)\n•  USSD\n\n**Currencies:** USD, GBP, EUR, NGN, GHS, KES, and more.\n\n**After payment:**\n Confirmation receipt sent to your email\n Campaign starts within 24–72hrs\n\n 256-bit SSL encrypted — fully secure."
   },
   {
     key: 'howlong',
     patterns: ['how long', 'when does', 'campaign start', 'when will', 'how fast', 'timeline', 'delivery time', 'when start', 'how soon', 'time frame'],
-    response: " **Campaign Timelines**\n\nAfter confirmed payment:\n\n• **Starter packages**  within **48 hours**\n• **Growth packages**  within **24 hours** \n• **Premium packages**  within **12 hours**\n• **Dance/TikTok**  delivered within **5 days**\n\nOnce live, you'll see growth in your Spotify for Artists / SoundCloud dashboard. A full analytics report is sent to you when the campaign ends. "
+    response: " **Campaign Timelines**\n\nAfter confirmed payment:\n\n• **Starter packages**  within **72 hours**\n• **Growth packages**  within **48 hours** \n• **Premium packages**  within **24 hours**\n• **Dance/TikTok**  delivered within **5 days**\n\nOnce live, you'll see growth in your Spotify for Artists / SoundCloud dashboard. A full analytics report is sent to you when the campaign ends. "
   },
   {
     key: 'real',
@@ -60,7 +60,7 @@ const KB = [
   {
     key: 'order',
     patterns: ['order', 'how to order', 'get started', 'start campaign', 'place order', 'sign up', 'begin', 'purchase', 'buy', 'how do i start', 'how can i start', 'start my campaign'],
-    response: " **How to Place Your Order**\n\n**Step 1 — Open the Order Form**\nClick the **\"Order Now\"** button anywhere on the site. You'll fill in:\n• Artist Name & Email\n• Track Link (Spotify/SoundCloud/etc.)\n• Platform & Package\n• Your Country\n\n**Step 2 — Review & Pay**\nCheck your order summary, then pay securely via **our secure payment gateway**.\n\n**Step 3 — Campaign Launches!**\n Confirmation receipt sent to your email\n Campaign live within 12–48hrs\n Full analytics report on completion\n\n Ready? Click **\"Order Now\"** on the page!"
+    response: " **How to Place Your Order**\n\n**Step 1 — Open the Order Form**\nClick the **\"Order Now\"** button anywhere on the site. You'll fill in:\n• Artist Name & Email\n• Track Link (Spotify/SoundCloud/etc.)\n• Platform & Package\n• Your Country\n\n**Step 2 — Review & Pay**\nCheck your order summary, then pay securely via **our secure payment gateway**.\n\n**Step 3 — Campaign Launches!**\n Confirmation receipt sent to your email\n Campaign live within 24–72hrs\n Full analytics report on completion\n\n Ready? Click **\"Order Now\"** on the page!"
   },
   {
     key: 'refund',
@@ -85,7 +85,7 @@ const KB = [
   {
     key: 'newartist',
     patterns: ['new artist', 'beginner', 'just starting', 'starting out', 'first time', 'brand new', 'no followers', 'small artist', 'unknown', 'grow my music'],
-    response: " **Best Package for New Artists**\n\nWelcome! Here's our recommendation:\n\n** Start with Spotify Growth — $150**\n• 30,000 real, targeted listeners\n• Algorithm boost — helps Spotify discover your music organically\n• Detailed analytics so you see real results\n• Campaign live within 24hrs\n\n**Why Growth over Starter?**\nThe 30,000 listener threshold tends to trigger Spotify's recommendation algorithm, giving your track continued organic reach after the campaign ends.\n\n**After your first campaign, consider:**\n• SoundCloud Growth ($150) — build community\n• Dance/TikTok 30s ($300) — viral potential\n\nMany artists start at $150 and scale up from there. \n\nReady to place your first order?"
+    response: " **Best Package for New Artists**\n\nWelcome! Here's our recommendation:\n\n** Start with Spotify Growth — $120**\n• 25,000 real, targeted listeners\n• Algorithm boost — helps Spotify discover your music organically\n• Detailed analytics so you see real results\n• Campaign live within 48hrs\n\n**Why Growth over Starter?**\nThe 25,000 listener threshold tends to trigger Spotify's recommendation algorithm, giving your track continued organic reach after the campaign ends.\n\n**After your first campaign, consider:**\n• SoundCloud Growth ($120) — build community\n• Dance/TikTok 30s ($300) — viral potential\n\nMany artists start at $120 and scale up from there. \n\nReady to place your first order?"
   },
   {
     key: 'invoice',

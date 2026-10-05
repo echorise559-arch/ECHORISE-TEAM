@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { COUNTRIES, PLATFORMS, SPOTIFY_PACKAGES, SOUNDCLOUD_PACKAGES, CHART_PACKAGES, DANCE_PACKAGES } from '../data'
 import ModalPortal from './ModalPortal'
+import Honeypot from './Honeypot'
+import { submitForm } from '../utils/submitForm'
 
 const ALL_PACKAGES = [
   ...SPOTIFY_PACKAGES.map(p => ({ ...p, label: `Spotify – ${p.name} ($${p.price})`, paymentLink: p.paymentLink || '' })),
@@ -11,12 +13,14 @@ const ALL_PACKAGES = [
   { id: 'custom', name: 'Custom', price: 0, label: 'Custom Campaign (Quote)', paymentLink: '' },
 ]
 
-const INIT = { artistName: '', email: '', trackLink: '', platform: '', package: '', country: '', notes: '', agreeTerms: false }
+const INIT = { artistName: '', email: '', trackLink: '', platform: '', package: '', country: '', notes: '', agreeTerms: false, hp: '' }
 
 export default function OrderModal({ isOpen, onClose, preselect, preselectPkg }) {
   const [form, setForm] = useState({ ...INIT, package: preselect || '' })
   const [errors, setErrors] = useState({})
-  const [linkError, setLinkError] = useState('')
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
+  const [notice, setNotice] = useState('')
   const overlayRef = useRef(null)
 
   // Scroll overlay to top when modal opens
@@ -46,16 +50,46 @@ export default function OrderModal({ isOpen, onClose, preselect, preselectPkg })
     return Object.keys(e).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setLinkError('')
-    if (!validate()) return
+    setSendError('')
+    setNotice('')
+    if (sending || !validate()) return
     const pkg = ALL_PACKAGES.find(p => p.id === form.package || p.label === form.package)
-    if (!pkg?.paymentLink) {
-      setLinkError('Payment link not available. Please contact us.')
-      return
+    const link = pkg?.paymentLink || ''
+
+    // Open the payment tab right now (inside the click) so phones do not block it
+    // after the network request. It is pointed at the payment page once the order is saved.
+    const payWin = link ? window.open('', '_blank') : null
+    if (payWin) payWin.opener = null
+
+    setSending(true)
+    try {
+      await submitForm('order', {
+        artistName: form.artistName,
+        email: form.email,
+        trackLink: form.trackLink,
+        platform: form.platform,
+        package: pkg ? pkg.label : form.package,
+        country: form.country,
+        notes: form.notes,
+        agreeTerms: form.agreeTerms,
+        paymentLink: link,
+        hp: form.hp,
+      })
+      if (link) {
+        if (payWin) payWin.location.href = link
+        else window.location.assign(link)
+        setNotice('Your order details were sent to our team. Complete your payment in the new tab.')
+      } else {
+        setNotice(`Your request was sent to our team. We will email a quote and payment link to ${form.email} within 24 hours.`)
+      }
+    } catch (err) {
+      if (payWin) payWin.close()
+      setSendError(err.message)
+    } finally {
+      setSending(false)
     }
-    window.open(pkg.paymentLink, '_blank')
   }
 
   const inputClass = k => `form-input ${errors[k] ? 'border-red-500' : ''}`
@@ -72,10 +106,11 @@ export default function OrderModal({ isOpen, onClose, preselect, preselectPkg })
         <div className="mb-7">
           <span className="section-label">Get Started</span>
           <h2 className="font-display font-bold text-3xl mb-2">Place Your <span className="grad-text">Order</span></h2>
-          <p className="text-gray-500 text-sm">Fill in the details below and we'll set up your campaign within 24 hours.</p>
+          <p className="text-gray-500 text-sm">Fill in the details below and we'll set up your campaign within 24 to 72 hours, depending on your package.</p>
         </div>
 
         <form onSubmit={handleSubmit}>
+          <Honeypot value={form.hp} onChange={v => set('hp', v)} />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -152,11 +187,14 @@ export default function OrderModal({ isOpen, onClose, preselect, preselectPkg })
             {errors.agreeTerms && <p className="text-red-400 text-xs mt-1">{errors.agreeTerms}</p>}
           </div>
 
-          <button type="submit" className="btn-primary w-full justify-center mt-6 py-4 text-base">
-            Proceed to Payment →
+          <button type="submit" disabled={sending} className="btn-primary w-full justify-center mt-6 py-4 text-base" style={sending ? { opacity: 0.7, cursor: 'wait' } : undefined}>
+            {sending ? 'Sending your order...' : 'Proceed to Payment →'}
           </button>
-          {linkError && (
-            <p className="text-red-400 text-xs text-center mt-3">{linkError}</p>
+          {sendError && (
+            <p role="alert" className="text-red-500 text-sm text-center mt-3">{sendError}</p>
+          )}
+          {notice && (
+            <p role="status" className="text-sm text-center mt-3" style={{ color: '#1A1A1A' }}>{notice}</p>
           )}
           <p className="text-center text-gray-500 text-xs mt-3">Secure payment · Response within 24 hours</p>
         </form>

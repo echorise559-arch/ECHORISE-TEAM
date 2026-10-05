@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import { Mail, FileText } from 'lucide-react'
 import { COUNTRIES } from '../data'
 import ModalPortal from './ModalPortal'
-import { notifyOwner } from '../utils/brevo'
+import { submitForm } from '../utils/submitForm'
+import Honeypot from './Honeypot'
 
 const SpotifyIcon = ({ size = 22 }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" width={size} height={size}>
@@ -20,9 +21,6 @@ const AppleMusicIcon = ({ size = 22 }) => (
   </svg>
 )
 
-// Formspree form ID for custom promotion requests — notifies owner immediately
-const CUSTOM_REQUEST_FORM_ID = 'mojppyke'
-
 const CHART_POSITIONS = [
   'Not targeting charts', 'Top 200 in a small market', 'Top 100 in a small market',
   'Top 50 in a small market', 'Viral 50 chart', 'Top 100 UK / USA', 'Top 50 UK / USA',
@@ -35,7 +33,7 @@ const TABS = [
   { id: 'apple', label: 'Apple Music', color: '#FC3C44', icon: <AppleMusicIcon /> },
 ]
 
-const INIT = { artistName: '', email: '', trackLink: '', budget: 250, country: '', chartPosition: '', notes: '' }
+const INIT = { artistName: '', email: '', trackLink: '', budget: 250, country: '', chartPosition: '', notes: '', hp: '' }
 
 function BudgetSlider({ value, onChange, color }) {
   const min = 50, max = 10000
@@ -62,6 +60,8 @@ export default function SpotifyCustomModal({ isOpen, onClose }) {
   const [invoiceSent, setInvoiceSent] = useState(false)
   const [invoiceForm, setInvoiceForm] = useState({ name: '', email: '', amount: 250, notes: '' })
   const [invoiceErrors, setInvoiceErrors] = useState({})
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
   const overlayRef = useRef(null)
 
   useEffect(() => {
@@ -90,33 +90,54 @@ export default function SpotifyCustomModal({ isOpen, onClose }) {
     setInvoiceErrors(e); return Object.keys(e).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!validate()) return
-    // Notify owner immediately — custom promotion requests fire right away
-    notifyOwner(CUSTOM_REQUEST_FORM_ID, {
-      _subject: `🎵 New Custom Promotion Request — ${form.artistName} (${tab})`,
-      formType: 'custom_request',
-      platform: tab,
-      artistName: form.artistName,
-      email: form.email,
-      trackLink: form.trackLink,
-      budget: form.budget,
-      country: form.country,
-      chartPosition: form.chartPosition || '',
-      notes: form.notes || '',
-      submittedAt: new Date().toISOString(),
-    })
-    setSubmitted(true)
+    if (sending || !validate()) return
+    setSendError('')
+    setSending(true)
+    try {
+      await submitForm('custom_request', {
+        platform: tab,
+        artistName: form.artistName,
+        email: form.email,
+        trackLink: form.trackLink,
+        budget: form.budget,
+        country: form.country,
+        chartPosition: tab === 'spotify' ? form.chartPosition : '',
+        notes: form.notes,
+        hp: form.hp,
+      })
+      setSubmitted(true)
+    } catch (err) {
+      setSendError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
-  const handleInvoice = (e) => {
+  const handleInvoice = async (e) => {
     e.preventDefault()
-    if (!validateInvoice()) return
-    setInvoiceSent(true)
+    if (sending || !validateInvoice()) return
+    setSendError('')
+    setSending(true)
+    try {
+      await submitForm('invoice_request', {
+        platform: tab,
+        name: invoiceForm.name,
+        email: invoiceForm.email,
+        amount: invoiceForm.amount,
+        notes: invoiceForm.notes,
+        hp: form.hp,
+      })
+      setInvoiceSent(true)
+    } catch (err) {
+      setSendError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
-  const resetAll = () => { setSubmitted(false); setInvoiceSent(false); setInvoiceMode(false); setForm(INIT); setInvoiceForm({ name: '', email: '', amount: 250, notes: '' }); onClose() }
+  const resetAll = () => { setSubmitted(false); setInvoiceSent(false); setInvoiceMode(false); setSendError(''); setForm(INIT); setInvoiceForm({ name: '', email: '', amount: 250, notes: '' }); onClose() }
 
   if (submitted) return (
     <ModalPortal>
@@ -136,8 +157,8 @@ export default function SpotifyCustomModal({ isOpen, onClose }) {
     <div ref={overlayRef} className="modal-overlay" onClick={e => e.target === e.currentTarget && resetAll()}>
       <div className="modal-box text-center" style={{ maxWidth: 440 }}>
         <div className="mb-5 flex justify-center" style={{ color: '#FF6A00' }}><Mail size={48} strokeWidth={1.75} aria-hidden="true" /></div>
-        <h2 className="font-display font-bold text-2xl mb-3 grad-text">Invoice Sent!</h2>
-        <p className="text-gray-500 mb-6 text-sm">Invoice for <strong className="text-gray-900">${invoiceForm.amount.toLocaleString()}</strong> sent to <strong className="text-gray-900">{invoiceForm.email}</strong>.</p>
+        <h2 className="font-display font-bold text-2xl mb-3 grad-text">Invoice Request Received</h2>
+        <p className="text-gray-500 mb-6 text-sm">We received your request for an invoice of <strong className="text-gray-900">${invoiceForm.amount.toLocaleString()}</strong>. Our team will email it to <strong className="text-gray-900">{invoiceForm.email}</strong> within 24 hours.</p>
         <button onClick={resetAll} className="btn-primary justify-center w-full">Done →</button>
       </div>
     </div>
@@ -148,11 +169,11 @@ export default function SpotifyCustomModal({ isOpen, onClose }) {
     <ModalPortal>
     <div ref={overlayRef} className="modal-overlay" onClick={e => e.target === e.currentTarget && onClose()}>
       <div className="modal-box" style={{ maxWidth: 520 }}>
-        <button onClick={() => setInvoiceMode(false)} className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-gray-500 hover:text-pink transition-colors" style={{ background: 'rgba(0,0,0,0.05)', border: '1px solid rgba(26,26,26,0.12)' }}>✕</button>
+        <button onClick={() => { setInvoiceMode(false); setSendError('') }} className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-gray-500 hover:text-pink transition-colors" style={{ background: 'rgba(0,0,0,0.05)', border: '1px solid rgba(26,26,26,0.12)' }}>✕</button>
         <div className="mb-7">
           <span className="section-label">Invoice</span>
-          <h2 className="font-display font-bold text-3xl mb-2">Send <span className="grad-text">Invoice</span></h2>
-          <p className="text-gray-500 text-sm">Enter the artist's details — we'll send the invoice directly to their email.</p>
+          <h2 className="font-display font-bold text-3xl mb-2">Request an <span className="grad-text">Invoice</span></h2>
+          <p className="text-gray-500 text-sm">Enter your details and our team will email you an invoice within 24 hours.</p>
         </div>
         <form onSubmit={handleInvoice}>
           <input type="hidden" name="platform" value={tab} />
@@ -173,8 +194,9 @@ export default function SpotifyCustomModal({ isOpen, onClose }) {
               <textarea name="notes" className="form-input resize-none" rows={3} placeholder="Campaign details, platform, deliverables…" value={invoiceForm.notes} onChange={e => setInv('notes', e.target.value)} />
             </div>
           </div>
-          <button type="submit" className="btn-primary w-full justify-center mt-6 py-4 text-base">Send Invoice →</button>
-          <button type="button" onClick={() => setInvoiceMode(false)} className="w-full text-center text-gray-500 text-xs mt-3 hover:text-gray-900 transition-colors py-2">← Back</button>
+          {sendError && <p role="alert" className="text-red-500 text-sm mt-4">{sendError}</p>}
+          <button type="submit" disabled={sending} className="btn-primary w-full justify-center mt-6 py-4 text-base" style={sending ? { opacity: 0.7, cursor: 'wait' } : undefined}>{sending ? 'Sending...' : 'Request Invoice →'}</button>
+          <button type="button" onClick={() => { setInvoiceMode(false); setSendError('') }} className="w-full text-center text-gray-500 text-xs mt-3 hover:text-gray-900 transition-colors py-2">← Back</button>
         </form>
       </div>
     </div>
@@ -211,6 +233,7 @@ export default function SpotifyCustomModal({ isOpen, onClose }) {
         </div>
 
         <form onSubmit={handleSubmit}>
+          <Honeypot value={form.hp} onChange={v => set('hp', v)} />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-display font-semibold text-gray-500 mb-1.5 uppercase tracking-wider">Artist Name *</label>
@@ -252,15 +275,16 @@ export default function SpotifyCustomModal({ isOpen, onClose }) {
             </div>
           </div>
 
-          <button type="submit" className="btn-primary w-full justify-center mt-6 py-4 text-base" style={{ background: `linear-gradient(135deg,${activeTab.color},${activeTab.color}bb)` }}>
-            Submit Custom Request →
+          {sendError && <p role="alert" className="text-red-500 text-sm mt-4">{sendError}</p>}
+          <button type="submit" disabled={sending} className="btn-primary w-full justify-center mt-6 py-4 text-base" style={{ background: `linear-gradient(135deg,${activeTab.color},${activeTab.color}bb)`, ...(sending ? { opacity: 0.7, cursor: 'wait' } : {}) }}>
+            {sending ? 'Sending...' : 'Submit Custom Request →'}
           </button>
           <div className="flex items-center justify-between mt-3">
             <p className="text-gray-500 text-xs">We'll respond with a custom proposal within 24 hours</p>
-            <button type="button" onClick={() => setInvoiceMode(true)}
+            <button type="button" onClick={() => { setSendError(''); setInvoiceMode(true) }}
               className="text-xs font-semibold flex items-center gap-1 px-3 py-1.5 rounded-lg transition-all hover:opacity-90"
               style={{ background: `${activeTab.color}15`, color: activeTab.color }}>
-              <FileText size={13} strokeWidth={2.2} aria-hidden="true" /> Send Invoice
+              <FileText size={13} strokeWidth={2.2} aria-hidden="true" /> Request Invoice
             </button>
           </div>
         </form>

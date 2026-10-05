@@ -13,20 +13,11 @@
 // (for example, in the invoice footer) for it to actually show up on the
 // email.
 
+import { adminFetch } from './adminAuth'
+
 const BASE_URL = 'https://echorisemedia.com'
 const SENDER   = { name: 'Echorise Media', email: 'support@echorisemedia.com' }
 const LEGAL_NAME = 'Echorise Media, Inc.'
-
-// ── Formspree — owner notification helper ────────────────────────────────────
-export async function notifyOwner(formId, payload) {
-  try {
-    await fetch(`https://formspree.io/f/${formId}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(payload),
-    })
-  } catch (_) {}
-}
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
@@ -40,8 +31,9 @@ function dueIn(days = 7) {
 }
 
 // Sends payload to the Netlify function which calls Brevo server-side
+// (admin only: the function rejects requests without a signed-in admin token)
 async function post(payload) {
-  const res = await fetch('/.netlify/functions/send-email', {
+  const res = await adminFetch('/.netlify/functions/send-email', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

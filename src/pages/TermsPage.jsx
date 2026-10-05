@@ -36,7 +36,7 @@ export default function TermsPage() {
         to increase exposure for a track, artist, or release. The specific
         package, target listener volume, platform, and estimated timeframe for
         a campaign are the ones you select and confirm on the order form or in
-        a written quote from us. Timeframes such as "within 24 to 48 hours" are
+        a written quote from us. Timeframes such as "within 24 to 72 hours" are
         estimates and not guaranteed delivery deadlines, though we work to meet
         them for every campaign.
       </p>

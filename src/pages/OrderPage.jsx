@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { COUNTRIES, PLATFORMS, SPOTIFY_PACKAGES, SOUNDCLOUD_PACKAGES, CHART_PACKAGES, DANCE_PACKAGES } from '../data'
 import PageHero from '../components/PageHero'
+import Honeypot from '../components/Honeypot'
+import { submitForm } from '../utils/submitForm'
 
 const ALL_PACKAGES = [
   ...SPOTIFY_PACKAGES.map(p => ({ ...p, label: `Spotify – ${p.name}`, category: 'Spotify', paymentLink: p.paymentLink || '' })),
@@ -12,15 +14,17 @@ const ALL_PACKAGES = [
   { id: 'custom', name: 'Custom', price: 0, label: 'Custom Campaign', category: 'Custom', features: [], paymentLink: '' },
 ]
 
-const INIT = { artistName: '', email: '', trackLink: '', platform: '', package: '', country: '', notes: '', agreeTerms: false }
+const INIT = { artistName: '', email: '', trackLink: '', platform: '', package: '', country: '', notes: '', agreeTerms: false, hp: '' }
 
 // ── Main Order Page ───────────────────────────────────────────────────────────
 export default function OrderPage() {
-  useSEO({ title: 'Order Music Promotion | Echorise Media', description: 'Start your music promotion campaign today. Choose a Spotify, SoundCloud, YouTube, Apple Music, chart or TikTok package and get real results within 24-48 hours.', canonical: 'https://echorisemedia.com/order' })
+  useSEO({ title: 'Order Music Promotion | Echorise Media', description: 'Start your music promotion campaign today. Choose a Spotify, SoundCloud, YouTube, Apple Music, chart or TikTok package and get real results within 24-72 hours.', canonical: 'https://echorisemedia.com/order' })
 
   const [form, setForm] = useState(INIT)
   const [errors, setErrors] = useState({})
-  const [linkError, setLinkError] = useState('')
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
+  const [notice, setNotice] = useState('')
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
 
@@ -39,16 +43,46 @@ export default function OrderPage() {
     return Object.keys(e).length === 0
   }
 
-  const handleOrder = (e) => {
+  const handleOrder = async (e) => {
     e.preventDefault()
-    setLinkError('')
-    if (!validate()) return
+    setSendError('')
+    setNotice('')
+    if (sending || !validate()) return
     const pkg = ALL_PACKAGES.find(p => p.id === form.package)
-    if (!pkg?.paymentLink) {
-      setLinkError('Payment link not available. Please contact us.')
-      return
+    const link = pkg?.paymentLink || ''
+
+    // Open the payment tab right now (inside the click) so phones do not block it
+    // after the network request. It is pointed at the payment page once the order is saved.
+    const payWin = link ? window.open('', '_blank') : null
+    if (payWin) payWin.opener = null
+
+    setSending(true)
+    try {
+      await submitForm('order', {
+        artistName: form.artistName,
+        email: form.email,
+        trackLink: form.trackLink,
+        platform: form.platform,
+        package: pkg ? `${pkg.label}${pkg.price > 0 ? ` ($${pkg.price})` : ''}` : form.package,
+        country: form.country,
+        notes: form.notes,
+        agreeTerms: form.agreeTerms,
+        paymentLink: link,
+        hp: form.hp,
+      })
+      if (link) {
+        if (payWin) payWin.location.href = link
+        else window.location.assign(link)
+        setNotice('Your order details were sent to our team. Complete your payment in the new tab.')
+      } else {
+        setNotice(`Your request was sent to our team. We will email a quote and payment link to ${form.email} within 24 hours.`)
+      }
+    } catch (err) {
+      if (payWin) payWin.close()
+      setSendError(err.message)
+    } finally {
+      setSending(false)
     }
-    window.open(pkg.paymentLink, '_blank')
   }
 
   return (
@@ -56,7 +90,7 @@ export default function OrderPage() {
       <PageHero
         label="Place Your Order"
         title={<>Start Your <span className="grad-text">Campaign</span></>}
-        subtitle="Complete the form below to launch your music promotion campaign. We'll begin within 24 hours of your order."
+        subtitle="Complete the form below to launch your music promotion campaign. We'll begin within 24 to 72 hours of your order, depending on your package."
         image="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=900&h=700&fit=crop&crop=center"
       />
 
@@ -66,6 +100,7 @@ export default function OrderPage() {
           <div className="glass-card p-8">
             <h3 className="font-display font-bold text-xl text-gray-900 mb-6">Campaign Details</h3>
             <form onSubmit={handleOrder}>
+              <Honeypot value={form.hp} onChange={v => set('hp', v)} />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[['artistName','Artist Name','Your artist / stage name','text'],['email','Email Address','your@email.com','email']].map(([k,label,ph,type]) => (
                   <div key={k}>
@@ -135,9 +170,12 @@ export default function OrderPage() {
                 {errors.agreeTerms && <p className="text-red-400 text-xs mt-1">{errors.agreeTerms}</p>}
               </div>
 
-              <button type="submit" className="btn-primary w-full justify-center mt-6 py-4 text-base">Proceed to Payment →</button>
-              {linkError && (
-                <p className="text-red-400 text-xs text-center mt-3">{linkError}</p>
+              <button type="submit" disabled={sending} className="btn-primary w-full justify-center mt-6 py-4 text-base" style={sending ? { opacity: 0.7, cursor: 'wait' } : undefined}>{sending ? 'Sending your order...' : 'Proceed to Payment →'}</button>
+              {sendError && (
+                <p role="alert" className="text-red-500 text-sm text-center mt-3">{sendError}</p>
+              )}
+              {notice && (
+                <p role="status" className="text-sm text-center mt-3" style={{ color: '#1A1A1A' }}>{notice}</p>
               )}
               <p className="text-center text-muted text-xs mt-3">Secure payment · Response within 24 hours</p>
             </form>

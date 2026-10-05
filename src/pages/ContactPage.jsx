@@ -1,8 +1,10 @@
 import useSEO from '../hooks/useSEO'
 import { Mail as LucideMail, Zap } from 'lucide-react'
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import PageHero from '../components/PageHero'
-import { notifyOwner } from '../utils/brevo'
+import { submitForm } from '../utils/submitForm'
+import Honeypot from '../components/Honeypot'
 import ContactButtons from '../components/ContactButtons'
 import CallPolicy from '../components/CallPolicy'
 
@@ -25,15 +27,15 @@ const GlobeIcon = () => (
   </svg>
 )
 
-// Formspree form ID for contact / custom-request messages
-const CONTACT_FORM_ID = 'mojppyke'
-
-const INIT = { name: '', email: '', subject: '', message: '' }
+const INIT = { name: '', email: '', subject: '', message: '', hp: '' }
 
 export default function ContactPage() {
   useSEO({ title: 'Contact Us | Echorise Media — Music Promotion Studio', description: 'Get in touch with the Echorise Media team. We respond within 24 hours. Talk to us about your music promotion campaign on Spotify, SoundCloud, YouTube, Apple Music and more.', canonical: 'https://echorisemedia.com/contact' })
-  const [form, setForm] = useState(INIT)
+  const [params] = useSearchParams()
+  const [form, setForm] = useState({ ...INIT, subject: (params.get('subject') || '').slice(0, 200) })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
   const [errors, setErrors] = useState({})
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
@@ -47,20 +49,25 @@ export default function ContactPage() {
     return Object.keys(e).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!validate()) return
-    // Notify owner immediately — contact/custom-request messages fire right away
-    notifyOwner(CONTACT_FORM_ID, {
-      _subject: `📩 New Contact Message from ${form.name}`,
-      formType: 'contact',
-      name: form.name,
-      email: form.email,
-      subject: form.subject || '(no subject)',
-      message: form.message,
-      submittedAt: new Date().toISOString(),
-    })
-    setSubmitted(true)
+    if (sending || !validate()) return
+    setSendError('')
+    setSending(true)
+    try {
+      await submitForm('contact', {
+        name: form.name,
+        email: form.email,
+        subject: form.subject,
+        message: form.message,
+        hp: form.hp,
+      })
+      setSubmitted(true)
+    } catch (err) {
+      setSendError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -93,6 +100,7 @@ export default function ContactPage() {
               <div className="glass-card p-8">
                 <h3 className="font-display font-bold text-xl mb-6" style={{ color: '#1A1A1A' }}>Send a Message</h3>
                 <form onSubmit={handleSubmit}>
+                  <Honeypot value={form.hp} onChange={v => set('hp', v)} />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
                       <label className="block text-xs font-display font-bold mb-1.5 uppercase tracking-wider" style={{ color: 'rgba(107,107,107,0.90)' }}>Your Name *</label>
@@ -114,7 +122,8 @@ export default function ContactPage() {
                     <textarea name="message" className={`form-input resize-none ${errors.message ? 'border-red-500' : ''}`} rows={6} placeholder="Tell us about your music, your goals, and how we can help…" value={form.message} onChange={e => set('message', e.target.value)} />
                     {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                   </div>
-                  <button type="submit" className="btn-primary w-full justify-center py-4">Send Message →</button>
+                  {sendError && <p role="alert" className="text-red-500 text-sm mb-3">{sendError}</p>}
+                  <button type="submit" disabled={sending} className="btn-primary w-full justify-center py-4" style={sending ? { opacity: 0.7, cursor: 'wait' } : undefined}>{sending ? 'Sending...' : 'Send Message →'}</button>
                 </form>
               </div>
             )}
@@ -124,7 +133,7 @@ export default function ContactPage() {
           <div className="flex flex-col gap-5">
             <div className="glass-card p-6">
               <h4 className="font-display font-bold mb-4" style={{ color: '#1A1A1A' }}>Contact Info</h4>
-              {[[<MailIcon />,'Email','support@echorisemedia.com'],[<ClockIcon />,'Response Time','Within 24 hours'],[<ClockIcon />,'Business Hours','Mon – Fri, 9am – 6pm GMT'],[<GlobeIcon />,'We Work With','Artists from 18+ countries']].map(([icon, label, val]) => (
+              {[[<MailIcon />,'Support','support@echorisemedia.com'],[<MailIcon />,'General enquiries','hello@echorisemedia.com'],[<ClockIcon />,'Response Time','Within 24 hours'],[<ClockIcon />,'Business Hours','Mon – Fri, 9am – 6pm GMT'],[<GlobeIcon />,'We Work With','Artists from 18+ countries']].map(([icon, label, val]) => (
                 <div key={label} className="flex items-center gap-3 mb-4 last:mb-0">
                   <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style={{ background: 'rgba(255,106,0,0.08)', border: '1.5px solid rgba(255,106,0,0.2)' }}>{icon}</span>
                   <div>

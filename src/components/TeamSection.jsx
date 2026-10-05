@@ -130,6 +130,11 @@ export default function TeamSection() {
           <div>
             <h3 className="tm-cta-title">Questions before you order?</h3>
             <p className="tm-cta-text">Talk to the team directly. Every inquiry gets a reply within 24 hours.</p>
+            <p className="tm-cta-text" style={{ marginTop: 8 }}>
+              <a href="mailto:support@echorisemedia.com" style={{ color: '#FF8C3A' }}>support@echorisemedia.com</a>
+              {' '}or{' '}
+              <a href="mailto:hello@echorisemedia.com" style={{ color: '#FF8C3A' }}>hello@echorisemedia.com</a>
+            </p>
           </div>
           <div className="tm-cta-actions">
             <a href="mailto:support@echorisemedia.com" className="tm-btn tm-btn--solid">

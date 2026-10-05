@@ -15,6 +15,7 @@ import YouTubePage from './pages/YouTubePage'
 import AppleMusicPage from './pages/AppleMusicPage'
 import AIChatbot from './components/AIChatbot'
 import InvoicePage from './pages/InvoicePage'
+import AdminArtistsPage from './pages/AdminArtistsPage'
 import LegalInfoPage from './pages/LegalInfoPage'
 import TermsPage from './pages/TermsPage'
 import PrivacyPage from './pages/PrivacyPage'
@@ -70,6 +71,7 @@ export default function App() {
         <Route path="/refund-policy" element={<Layout><RefundPolicyPage /></Layout>} />
         <Route path="*" element={<Layout><NotFound /></Layout>} />
         <Route path="/admin/invoice" element={<InvoicePage />} />
+        <Route path="/admin/artists" element={<AdminArtistsPage />} />
       </Routes>
     </BrowserRouter>
   )

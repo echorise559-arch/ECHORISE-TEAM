@@ -30,7 +30,7 @@ export default function SuccessPage() {
         : 'Custom Quote — our team will be in touch within 24hrs.',
       '─────────────────────────────',
       isPaid ? 'Payment processed via our secure payment gateway' : '',
-      'Campaign begins within 24–48 hours.',
+      'Campaign begins within 24–72 hours.',
       'Thank you for choosing Echorise Media.',
     ].filter(Boolean).join('\n')
 
@@ -66,7 +66,7 @@ export default function SuccessPage() {
             {isPaid ? 'Payment Confirmed!' : 'Quote Request Received!'}
           </h1>
           <p className="text-muted">
-            {isPaid ? "Your campaign is locked in. We'll begin within 24–48 hours." : "Our team will review your request and get back to you within 24 hours."}
+            {isPaid ? "Your campaign is locked in. We'll begin within 24–72 hours." : "Our team will review your request and get back to you within 24 hours."}
           </p>
         </div>
 
@@ -126,7 +126,7 @@ export default function SuccessPage() {
 
           <div className="mt-5 p-4 rounded-xl text-sm text-muted" style={{ background: isPaid ? 'rgba(16,185,129,0.07)' : 'rgba(255,106,0,0.06)', border: isPaid ? '1px solid rgba(16,185,129,0.15)' : '1px solid rgba(255,106,0,0.18)' }}>
             {isPaid
-              ? <>✓ Payment processed securely via our secure payment gateway &nbsp;·&nbsp; A receipt has been sent to <strong className="text-gray-900">{orderData.email}</strong> &nbsp;·&nbsp; Campaign begins within 24–48 hours.</>
+              ? <>✓ Payment processed securely via our secure payment gateway &nbsp;·&nbsp; A receipt has been sent to <strong className="text-gray-900">{orderData.email}</strong> &nbsp;·&nbsp; Campaign begins within 24–72 hours.</>
               : <><ClipboardList size={14} strokeWidth={2.2} aria-hidden="true" style={{ display: 'inline', verticalAlign: '-2px', marginRight: 4 }} /> Quote request received &nbsp;·&nbsp; Our team will contact <strong className="text-gray-900">{orderData.email}</strong> within 24 hours with a custom offer.</>
             }
           </div>
@@ -144,7 +144,7 @@ export default function SuccessPage() {
         <div className="glass-card p-7 mt-8">
           <h4 className="font-display font-semibold text-gray-900 mb-4">What Happens Next?</h4>
           <div className="flex flex-col gap-3">
-            {[['24–48 hrs','Our team reviews your track and begins campaign setup.'],['Week 1','Your track is promoted to targeted channels and real listeners.'],['Week 2–3','Listen counts, saves, and engagement grow organically.'],['Campaign End','You receive a detailed analytics report with all campaign data.']].map(([time, desc]) => (
+            {[['24–72 hrs','Our team reviews your track and begins campaign setup.'],['Week 1','Your track is promoted to targeted channels and real listeners.'],['Week 2–3','Listen counts, saves, and engagement grow organically.'],['Campaign End','You receive a detailed analytics report with all campaign data.']].map(([time, desc]) => (
               <div key={time} className="flex gap-3 text-sm">
                 <span className="font-display font-semibold text-pink flex-shrink-0 w-20">{time}</span>
                 <span className="text-muted">{desc}</span>

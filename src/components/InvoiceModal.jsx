@@ -5,10 +5,10 @@ import ModalPortal from './ModalPortal'
 
 const SERVICES_LIST = [
   'Spotify Promotion – Starter ($50)',
-  'Spotify Promotion – Growth ($150)',
+  'Spotify Promotion – Growth ($120)',
   'Spotify Promotion – Premium ($190)',
   'SoundCloud Promotion – Starter ($50)',
-  'SoundCloud Promotion – Growth ($150)',
+  'SoundCloud Promotion – Growth ($120)',
   'SoundCloud Promotion – Premium ($190)',
   'Chart Promotion – Starter ($150)',
   'Chart Promotion – Growth ($350)',
@@ -19,7 +19,7 @@ const SERVICES_LIST = [
   'Custom Campaign',
 ]
 
-export default function InvoiceModal({ open, onClose }) {
+export default function InvoiceModal({ open, onClose, onExpired }) {
   const [form, setForm] = useState({
     artistName: '',
     artistEmail: '',
@@ -79,7 +79,12 @@ export default function InvoiceModal({ open, onClose }) {
       setSent(true)
     } catch (err) {
       setSending(false)
-      setError('Failed to send invoice. Please try again or contact support.')
+      if (err.code === 'UNAUTHORIZED') {
+        if (onExpired) onExpired()
+        setError(err.message)
+        return
+      }
+      setError(err.message && err.message !== 'Failed to fetch' ? `Failed to send invoice: ${err.message}` : 'Failed to send invoice. Please try again or contact support.')
       console.error('Brevo invoice error:', err)
     }
   }

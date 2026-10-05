@@ -1,24 +1,53 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import InvoiceModal from '../components/InvoiceModal'
+import { login, hasValidSession, clearToken } from '../utils/adminAuth'
 
 export default function InvoicePage() {
   const [password, setPassword] = useState('')
   const [unlocked, setUnlocked] = useState(false)
   const [error, setError] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [checking, setChecking] = useState(true)
 
-  const handleLogin = (e) => {
+  // Reuse a still-valid session (for example after signing in to /admin/artists).
+  useEffect(() => {
+    let alive = true
+    hasValidSession().then(ok => {
+      if (!alive) return
+      if (ok) setUnlocked(true)
+      setChecking(false)
+    })
+    return () => { alive = false }
+  }, [])
+
+  const handleLogin = async (e) => {
     e.preventDefault()
-    const correct = import.meta.env.VITE_INVOICE_PASSWORD
-    if (password === correct) {
-      setError('')
+    if (busy) return
+    setBusy(true)
+    setError('')
+    try {
+      await login(password)
+      setPassword('')
       setUnlocked(true)
-    } else {
-      setError('Incorrect password')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setBusy(false)
     }
   }
 
+  const handleExpired = () => {
+    clearToken()
+    setUnlocked(false)
+    setError('Session expired. Please sign in again.')
+  }
+
+  if (checking) {
+    return <div style={{ minHeight: '100vh', background: '#FAF7F2' }} />
+  }
+
   if (unlocked) {
-    return <InvoiceModal open={true} onClose={() => {}} />
+    return <InvoiceModal open={true} onClose={() => {}} onExpired={handleExpired} />
   }
 
   return (
@@ -134,6 +163,7 @@ export default function InvoicePage() {
 
           <button
             type="submit"
+            disabled={busy}
             style={{
               width: '100%',
               padding: '13px',
@@ -145,14 +175,15 @@ export default function InvoicePage() {
               fontSize: '14px',
               letterSpacing: '-0.01em',
               border: 'none',
-              cursor: 'pointer',
+              cursor: busy ? 'wait' : 'pointer',
+              opacity: busy ? 0.7 : 1,
               boxShadow: '0 4px 20px rgba(255,106,0,0.28)',
               transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
             }}
             onMouseEnter={e => { e.target.style.background = '#E85F00'; e.target.style.transform = 'translateY(-2px)'; e.target.style.boxShadow = '0 8px 32px rgba(255,106,0,0.40)' }}
             onMouseLeave={e => { e.target.style.background = '#FF6A00'; e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 4px 20px rgba(255,106,0,0.28)' }}
           >
-            Login →
+            {busy ? 'Signing in...' : 'Login →'}
           </button>
         </form>
       </div>

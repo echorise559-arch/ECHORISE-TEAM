@@ -28,7 +28,7 @@ const COMMITMENTS = [
   {
     Icon: Clock,
     title: 'Fast, clear start',
-    text: 'Campaigns typically begin within 24 to 48 hours of payment confirmation, with a confirmation email and campaign brief.',
+    text: 'Campaigns typically begin within 24 to 72 hours of payment confirmation, with a confirmation email and campaign brief.',
   },
   {
     Icon: MessageCircle,
@@ -40,7 +40,7 @@ const COMMITMENTS = [
 const STEPS = [
   { title: 'Send your track', text: 'Fill in the order form with your track link and what you want to achieve.' },
   { title: 'Get your payment link', text: 'A secure payment link is sent to you after you submit the form.' },
-  { title: 'Campaign brief and launch', text: 'Once payment is confirmed you get a confirmation email and campaign brief. Your campaign typically starts within 24 to 48 hours.' },
+  { title: 'Campaign brief and launch', text: 'Once payment is confirmed you get a confirmation email and campaign brief. Your campaign typically starts within 24 to 72 hours.' },
   { title: 'Receive your report', text: 'When the campaign ends, you get a full analytics report of the results.' },
 ]
 

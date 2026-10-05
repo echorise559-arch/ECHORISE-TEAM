@@ -19,7 +19,7 @@ export default function RefundPolicyPage() {
       <h2>1. Delivery Timeframes</h2>
       <p>
         Each package lists an estimated timeframe for your campaign to go
-        live, for example within 24 to 48 hours of payment confirmation. This
+        live, for example within 24 to 72 hours of payment confirmation. This
         is an estimate based on typical campaign setup and placement time,
         not a fixed guarantee, though we aim to meet it for every order. You
         will receive a confirmation email once your campaign has started.

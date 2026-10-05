@@ -11,6 +11,7 @@ import StatsBar from '../components/StatsBar'
 import FAQSection from '../components/FAQSection'
 import PartnerLogos from '../components/PartnerLogos'
 import TopArtists from '../components/TopArtists'
+import ArtistSpotlight from '../components/ArtistSpotlight'
 import VideoTestimonials from '../components/VideoTestimonials'
 import CallPolicy from '../components/CallPolicy'
 import { SPOTIFY_PACKAGES, REVIEWS } from '../data'
@@ -365,7 +366,7 @@ export default function Home() {
               {[
                 ['100% real listeners — no bots, no fake streams',          '#1DB954'],
                 ['Genre-targeted campaigns reaching the right audience',    '#FF6A00'],
-                ['Campaigns live within 48 hours of payment',              '#4B3F72'],
+                ['Campaigns live within 24 to 72 hours of payment',              '#4B3F72'],
                 ['Full analytics report delivered at campaign end',         '#FF6A00'],
               ].map(([text, color]) => (
                 <div key={text} className="flex items-center gap-3 text-sm" style={{ color: 'rgba(26,26,26,0.65)' }}>
@@ -429,6 +430,9 @@ export default function Home() {
 
       {/* ── TOP ARTISTS ── */}
       <TopArtists onOrder={openOrder} />
+
+      {/* ── ARTIST SPOTLIGHT (hidden until an artist is added in /admin/artists) ── */}
+      <ArtistSpotlight />
 
       {/* ── HOW WE WORK / TRUST ── */}
       <TrustSection onOrder={openOrder} />

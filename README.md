@@ -6,7 +6,8 @@ A full-featured music promotion website built with **React + Vite + Tailwind CSS
 - React 18 + React Router v6
 - Tailwind CSS v3 with custom design tokens
 - Vite build system
-- Netlify Forms (built-in, no backend needed)
+- Netlify Functions + Netlify Blobs (form emails, artist spotlight storage)
+- Brevo (transactional email)
 - Secure payment gateway integration (placeholder, ready to activate)
 
 ## Project Structure
@@ -15,9 +16,10 @@ src/
   components/
     Navbar.jsx            # Fixed navbar with mobile menu + Order Now modal
     Footer.jsx            # Site footer
-    OrderModal.jsx        # Full order form modal (Netlify Forms)
+    OrderModal.jsx        # Full order form modal (emailed to the team)
     PaymentModal.jsx      # Secure payment step + invoice flow
-    SpotifyCustomModal.jsx # Custom Spotify campaign request (Netlify Forms)
+    SpotifyCustomModal.jsx # Custom campaign request + invoice request (emailed to the team)
+    ArtistSpotlight.jsx   # Artist of the Week / Month section (hidden until an artist is added)
     PricingCard.jsx       # Reusable pricing card
     ReviewCard.jsx        # Review card with image, flag, stars, reply
     TeamSection.jsx       # Team ledger by department (filterable; optional photo per member)
@@ -32,7 +34,8 @@ src/
     SoundCloudPage.jsx    # SoundCloud promotion page
     ChartPage.jsx         # Chart promotion page
     DancePage.jsx         # Dance video promotion page
-    ContactPage.jsx       # Contact form page (Netlify Forms)
+    ContactPage.jsx       # Contact form page (emailed to the team)
+    AdminArtistsPage.jsx  # Hidden dashboard at /admin/artists
     OrderPage.jsx         # Standalone order page with 3-step flow
     SuccessPage.jsx       # Post-payment success + invoice download
     NotFound.jsx          # 404 page
@@ -42,12 +45,24 @@ src/
 
 ## Environment variables (Netlify)
 
-Set these in **Netlify → Site configuration → Environment variables**, then redeploy. All are optional — a button or icon simply stays hidden until its value is set.
+Set these in **Netlify > Site configuration > Environment variables**, then redeploy.
+
+### Required for email and the admin pages
+
+| Variable | Example | What it controls |
+|---|---|---|
+| `ADMIN_PASSWORD` | a new strong password, 8+ characters | Password for `/admin/artists` and `/admin/invoice`. Checked on the server only |
+| `BREVO_API_KEY` | your Brevo API key | Sends form notifications, the test email and invoices |
+| `NOTIFY_EMAILS` | `support@echorisemedia.com,hello@echorisemedia.com` | Inboxes that receive every form submission. Defaults to those two addresses when not set |
+
+`VITE_INVOICE_PASSWORD` is no longer used. Delete it from Netlify.
+
+### Optional (a button or icon stays hidden until its value is set)
 
 | Variable | Example | What it controls |
 |---|---|---|
 | `WHATSAPP_NUMBER` | `2348012345678` | WhatsApp buttons (digits only, with country code) |
-| `TELEGRAM_LINK` | `https://t.me/echorisemedia` | Telegram buttons (footer, contact page, team section). Change this value any time to update the link |
+| `TELEGRAM_LINK` | `https://t.me/echorisemedia` | Telegram buttons (footer, contact page, team section) |
 | `TELEGRAM_USERNAME` | `echorisemedia` | Older alternative to `TELEGRAM_LINK`; only used if `TELEGRAM_LINK` is not set |
 | `TIKTOK_URL` | `https://tiktok.com/@echorisemedia` | TikTok icon in the footer |
 | `INSTAGRAM_URL` | `https://instagram.com/echorisemedia` | Instagram icon in the footer |
@@ -63,26 +78,51 @@ npm run preview   # preview production build
 
 ## Deploy to Netlify
 
-### Option 1: Drag & Drop
-1. Run `npm run build`
-2. Drag the `dist/` folder into [app.netlify.com/drop](https://app.netlify.com/drop)
+The site now uses Netlify Functions (form emails, admin pages, artist storage), so it must be deployed
+through **Git** or the **Netlify CLI**. Dragging only the `dist/` folder into Netlify Drop publishes the
+pages but does not run any functions.
 
-### Option 2: Git + Netlify CI
+### Option 1: Git + Netlify CI (recommended)
 1. Push this repo to GitHub/GitLab
-2. Connect to Netlify → New site from Git
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-5. Deploy!
+2. Connect to Netlify > New site from Git
+3. Build command: `npm run build`, publish directory: `dist` (already set in `netlify.toml`)
+4. Add the environment variables above, then deploy
 
-The `netlify.toml` handles SPA routing automatically.
+### Option 2: Netlify CLI
+```bash
+npm install
+npx netlify deploy --build --prod
+```
 
-## Netlify Forms
-Forms are pre-configured and will work automatically on Netlify. Three forms:
-- **order** — Campaign order form
-- **spotify-custom** — Custom Spotify request  
-- **contact** — General contact form
+`netlify.toml` handles SPA routing and the functions folder automatically.
 
-Check submissions at: Netlify Dashboard → Forms
+## Forms and email
+
+No outside form service is used. Every form posts to `netlify/functions/submit.js`, which emails the
+details through Brevo to `NOTIFY_EMAILS`. The visitor only sees a success message after Brevo accepts the
+email, and sees an error message if it does not. Forms covered:
+- **Contact** page
+- **Custom promotion request** (Spotify, YouTube, Apple Music)
+- **Invoice request** inside the custom request popup
+- **Order** popup and the **Order** page (sent before the visitor is taken to the payment page)
+
+Brevo checklist:
+1. `support@echorisemedia.com` must be a verified sender in Brevo
+2. The `echorisemedia.com` domain must be authenticated in Brevo (DKIM and SPF). If SPF already exists for
+   another sender, add Brevo's include to that same record instead of creating a second one
+3. Create `hello@echorisemedia.com` in Cloudflare Email Routing and forward it to your inbox
+
+After deploying, open `/admin/artists` and press **Send test email** to confirm delivery.
+
+## Artist of the Week and Artist of the Month
+
+Managed at `/admin/artists` (not linked anywhere on the site). Sign in with `ADMIN_PASSWORD`, then for each
+slot you can set the artist name, period label, genre or location line, description, image, up to 8
+streaming links and up to 6 social links. Clearing a slot removes its text, image and links. The home page
+section stays hidden while both slots are empty. Data and images are stored in Netlify Blobs.
+
+`/admin/invoice` uses the same password. The invoice email function (`send-email`) only accepts requests
+from a signed-in admin.
 
 ## Activating Payments
 Contact the Echorise Media dev team to configure the payment gateway integration in `src/components/PaymentModal.jsx`.
