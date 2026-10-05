@@ -1,8 +1,8 @@
-// Admin-only management of the two spotlight slots.
-//   GET                      -> { week, month, options }   full records for editing
+// Admin-only management of the three spotlight slots (week, month, year).
+//   GET                      -> { week, month, year, options }   full records for editing
 //   PUT    { slot, data, image } -> save a slot. image: data URL to replace,
 //                               null to remove the image, omitted to keep it
-//   DELETE ?slot=week|month  -> clear the slot (text, links and image)
+//   DELETE ?slot=week|month|year  -> clear the slot (text, links and image)
 
 import { isAuthorized } from '../lib/auth.js'
 import { json, readJson } from '../lib/http.js'
@@ -32,10 +32,11 @@ export default async (req) => {
 
   try {
     if (req.method === 'GET') {
-      const [week, month] = await Promise.all(SLOTS.map(readRecord))
+      const [week, month, year] = await Promise.all(SLOTS.map(readRecord))
       return json(200, {
         week: editorShape(week && { ...week, slot: 'week' }),
         month: editorShape(month && { ...month, slot: 'month' }),
+        year: editorShape(year && { ...year, slot: 'year' }),
         options: {
           socialPlatforms: SOCIAL_PLATFORMS,
           streamingPlatforms: STREAMING_PLATFORMS,

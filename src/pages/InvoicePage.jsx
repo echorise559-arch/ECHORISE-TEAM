@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import InvoiceModal from '../components/InvoiceModal'
 import { login, hasValidSession, clearToken } from '../utils/adminAuth'
+import useFiveTap from '../hooks/useFiveTap'
 
 export default function InvoicePage() {
   const [password, setPassword] = useState('')
@@ -8,6 +10,7 @@ export default function InvoicePage() {
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   const [checking, setChecking] = useState(true)
+  const { revealed, onTap } = useFiveTap()
 
   // Reuse a still-valid session (for example after signing in to /admin/artists).
   useEffect(() => {
@@ -64,7 +67,7 @@ export default function InvoicePage() {
     >
       {/* Brand */}
       <div style={{ marginBottom: '32px', textAlign: 'center' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'baseline', marginBottom: '8px' }}>
+        <div onClick={onTap} style={{ display: 'inline-flex', alignItems: 'baseline', marginBottom: '8px', userSelect: 'none', WebkitUserSelect: 'none', WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}>
           <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '2rem', letterSpacing: '-0.04em', color: '#1A1A1A', lineHeight: 1 }}>
             echorise
           </span>
@@ -89,6 +92,16 @@ export default function InvoicePage() {
             Admin Access
           </span>
         </div>
+        {revealed && (
+          <div style={{ marginTop: '14px' }}>
+            <Link
+              to="/admin/artists"
+              style={{ fontSize: '13px', fontWeight: 700, color: '#FF6A00', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+            >
+              Open Admin Dashboard →
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Login card */}

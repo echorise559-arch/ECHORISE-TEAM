@@ -19,7 +19,7 @@ src/
     OrderModal.jsx        # Full order form modal (emailed to the team)
     PaymentModal.jsx      # Secure payment step + invoice flow
     SpotifyCustomModal.jsx # Custom campaign request + invoice request (emailed to the team)
-    ArtistSpotlight.jsx   # Artist of the Week / Month section (hidden until an artist is added)
+    ArtistSpotlight.jsx   # Artist of the Week / Month / Year section (hidden until an artist is added)
     PricingCard.jsx       # Reusable pricing card
     ReviewCard.jsx        # Review card with image, flag, stars, reply
     TeamSection.jsx       # Team ledger by department (filterable; optional photo per member)
@@ -114,12 +114,12 @@ Brevo checklist:
 
 After deploying, open `/admin/artists` and press **Send test email** to confirm delivery.
 
-## Artist of the Week and Artist of the Month
+## Artist of the Week, Month and Year
 
 Managed at `/admin/artists` (not linked anywhere on the site). Sign in with `ADMIN_PASSWORD`, then for each
 slot you can set the artist name, period label, genre or location line, description, image, up to 8
 streaming links and up to 6 social links. Clearing a slot removes its text, image and links. The home page
-section stays hidden while both slots are empty. Data and images are stored in Netlify Blobs.
+section stays hidden while all three slots are empty. Artist of the Year appears as a full-width card below the Week and Month cards. Data and images are stored in Netlify Blobs.
 
 `/admin/invoice` uses the same password. The invoice email function (`send-email`) only accepts requests
 from a signed-in admin.

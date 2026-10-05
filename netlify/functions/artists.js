@@ -1,5 +1,5 @@
 // Public, read-only endpoint for the Artist of the Week / Month section.
-//   GET /.netlify/functions/artists            -> { week: {...}|null, month: {...}|null }
+//   GET /.netlify/functions/artists            -> { week: {...}|null, month: {...}|null, year: {...}|null }
 //   GET /.netlify/functions/artists?image=week -> the stored image for that slot
 
 import { SLOTS, readRecord, readImage } from '../lib/storage.js'
@@ -40,8 +40,8 @@ export default async (req) => {
   }
 
   try {
-    const [week, month] = await Promise.all(SLOTS.map(readRecord))
-    return json(200, { week: publicShape('week', week), month: publicShape('month', month) }, { 'Cache-Control': 'public, max-age=0, must-revalidate' })
+    const [week, month, year] = await Promise.all(SLOTS.map(readRecord))
+    return json(200, { week: publicShape('week', week), month: publicShape('month', month), year: publicShape('year', year) }, { 'Cache-Control': 'public, max-age=0, must-revalidate' })
   } catch (err) {
     console.error('artists: read failed', err)
     return json(500, { error: 'Could not load artists' })

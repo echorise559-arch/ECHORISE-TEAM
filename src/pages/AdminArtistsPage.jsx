@@ -1,4 +1,4 @@
-// Hidden dashboard for the Artist of the Week / Month spotlight (/admin/artists).
+// Hidden dashboard for the Artist of the Week / Month / Year spotlight (/admin/artists).
 // Not linked anywhere on the public site. The password is checked on the server.
 
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -7,7 +7,8 @@ import { Plus, Trash2, ImagePlus, LogOut, Send, Loader2 } from 'lucide-react'
 import { login, hasValidSession, clearToken, adminFetch } from '../utils/adminAuth'
 
 const API = '/.netlify/functions/admin-artists'
-const SLOT_LABEL = { week: 'Artist of the Week', month: 'Artist of the Month' }
+const SLOT_LABEL = { week: 'Artist of the Week', month: 'Artist of the Month', year: 'Artist of the Year' }
+const LABEL_PLACEHOLDER = { week: 'Week of 5 October', month: 'October 2026', year: '2026' }
 const EMPTY = { name: '', tagline: '', label: '', description: '', socials: [], streaming: [] }
 const MAX_SOURCE_BYTES = 15 * 1024 * 1024
 const MAX_UPLOAD_BYTES = 1_400_000
@@ -283,7 +284,7 @@ function SlotEditor({ slot, record, options, onSaved, onCleared, onExpired }) {
         </div>
         <div className="ad-field">
           <label className="ad-label" htmlFor={`${slot}-label`}>Period label</label>
-          <input id={`${slot}-label`} className="ad-input" value={form.label} maxLength={limits.label} placeholder={slot === 'week' ? 'Week of 5 October' : 'October 2026'} onChange={e => set('label', e.target.value)} />
+          <input id={`${slot}-label`} className="ad-input" value={form.label} maxLength={limits.label} placeholder={LABEL_PLACEHOLDER[slot]} onChange={e => set('label', e.target.value)} />
         </div>
       </div>
 
@@ -409,7 +410,7 @@ export default function AdminArtistsPage() {
     }
   }
 
-  const tabs = useMemo(() => [['week', SLOT_LABEL.week], ['month', SLOT_LABEL.month]], [])
+  const tabs = useMemo(() => [['week', SLOT_LABEL.week], ['month', SLOT_LABEL.month], ['year', SLOT_LABEL.year]], [])
 
   if (phase === 'checking') return <div className="ad-page" />
   if (phase === 'signin') return <div className="ad-page"><SignIn onDone={signedIn} notice={notice} /></div>
@@ -462,7 +463,7 @@ export default function AdminArtistsPage() {
               ))}
             </div>
 
-            {/* key remounts the editor when switching between Week and Month */}
+            {/* key remounts the editor when switching between Week, Month and Year */}
             <SlotEditor
               key={tab}
               slot={tab}

@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Mail } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { sendInvoiceEmail } from '../utils/brevo'
 import ModalPortal from './ModalPortal'
+import useFiveTap from '../hooks/useFiveTap'
 
 const SERVICES_LIST = [
   'Spotify Promotion – Starter ($50)',
@@ -35,6 +37,7 @@ export default function InvoiceModal({ open, onClose, onExpired }) {
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
   const overlayRef = useRef(null)
+  const { revealed, onTap } = useFiveTap()
 
   useEffect(() => {
     if (open && overlayRef.current) overlayRef.current.scrollTop = 0
@@ -110,11 +113,18 @@ export default function InvoiceModal({ open, onClose, onExpired }) {
         <div className="px-8 py-6 flex items-center justify-between" style={{ background: 'linear-gradient(135deg,#1A1A1A,#2D1A0E)', borderBottom: '2px solid #FF6A00' }}>
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span style={{ color: '#FF6A00', fontWeight: 800, fontFamily: 'Syne, sans-serif', fontSize: 18 }}>echorise</span>
-              <span style={{ color: '#FF6A00', fontWeight: 800, fontSize: 18 }}>.</span>
+              <span onClick={onTap} style={{ display: 'inline-flex', alignItems: 'baseline', userSelect: 'none', WebkitUserSelect: 'none', WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}>
+                <span style={{ color: '#FF6A00', fontWeight: 800, fontFamily: 'Syne, sans-serif', fontSize: 18 }}>echorise</span>
+                <span style={{ color: '#FF6A00', fontWeight: 800, fontSize: 18 }}>.</span>
+              </span>
               <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ background: 'rgba(255,106,0,0.15)', color: '#FF6A00', border: '1px solid rgba(255,106,0,0.3)' }}>INVOICE</span>
             </div>
             <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>Send a payment invoice directly to artist email</p>
+            {revealed && (
+              <Link to="/admin/artists" className="text-xs font-bold" style={{ display: 'inline-block', marginTop: 8, color: '#FF6A00', textDecoration: 'underline', textUnderlineOffset: 3 }}>
+                Open Admin Dashboard →
+              </Link>
+            )}
           </div>
           <button onClick={handleClose} className="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:scale-110"
             style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.6)' }}>

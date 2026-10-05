@@ -1,4 +1,4 @@
-// Artist of the Week / Artist of the Month showcase.
+// Artist of the Week / Month / Year showcase.
 // Content is managed from the hidden admin page (/admin/artists) and loaded from
 // /.netlify/functions/artists. The whole section stays hidden until at least one
 // artist has been added, so visitors never see an empty block.
@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 
-const SLOT_TITLE = { week: 'Artist of the Week', month: 'Artist of the Month' }
+const SLOT_TITLE = { week: 'Artist of the Week', month: 'Artist of the Month', year: 'Artist of the Year' }
 
 function initials(name) {
   return name
@@ -77,6 +77,7 @@ function SpotlightCard({ artist, wide }) {
 
 export default function ArtistSpotlight() {
   const [artists, setArtists] = useState([])
+  const [yearArtist, setYearArtist] = useState(null)
 
   useEffect(() => {
     let alive = true
@@ -85,12 +86,13 @@ export default function ArtistSpotlight() {
       .then(data => {
         if (!alive || !data) return
         setArtists(['week', 'month'].map(k => data[k]).filter(Boolean))
+        setYearArtist(data.year || null)
       })
       .catch(() => {})
     return () => { alive = false }
   }, [])
 
-  if (artists.length === 0) return null
+  if (artists.length === 0 && !yearArtist) return null
 
   return (
     <section className="as-section" id="artist-spotlight" aria-labelledby="artist-spotlight-heading">
@@ -103,11 +105,19 @@ export default function ArtistSpotlight() {
           <p className="as-lede">Featured by the Echorise Media team. Listen, follow and support them.</p>
         </div>
 
-        <div className={`as-grid${artists.length === 1 ? ' as-grid--single' : ''}`}>
-          {artists.map(a => (
-            <SpotlightCard key={a.slot} artist={a} wide={artists.length === 1} />
-          ))}
-        </div>
+        {artists.length > 0 && (
+          <div className={`as-grid${artists.length === 1 ? ' as-grid--single' : ''}`}>
+            {artists.map(a => (
+              <SpotlightCard key={a.slot} artist={a} wide={artists.length === 1} />
+            ))}
+          </div>
+        )}
+
+        {yearArtist && (
+          <div className="as-year">
+            <SpotlightCard artist={yearArtist} wide />
+          </div>
+        )}
 
         <div className="as-cta">
           <p className="as-cta-text">Want your music featured here?</p>

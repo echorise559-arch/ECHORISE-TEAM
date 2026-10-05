@@ -1,10 +1,10 @@
 // Artist spotlight storage on Netlify Blobs (built in, no extra account needed).
-//   store "artists"        -> key "week" | "month"  (JSON record)
-//   store "artist-images"  -> key "week" | "month"  (image bytes + content type)
+//   store "artists"        -> key "week" | "month" | "year"  (JSON record)
+//   store "artist-images"  -> key "week" | "month" | "year"  (image bytes + content type)
 
 import { getStore } from '@netlify/blobs'
 
-export const SLOTS = ['week', 'month']
+export const SLOTS = ['week', 'month', 'year']
 
 const LIMITS = {
   name: 80,

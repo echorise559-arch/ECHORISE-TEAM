@@ -422,6 +422,7 @@
 
 .as-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: stretch; }
 .as-grid--single { grid-template-columns: minmax(0, 1fr); }
+.as-grid + .as-year { margin-top: 28px; }
 
 .as-card {
   display: flex; flex-direction: column; overflow: hidden; min-width: 0;

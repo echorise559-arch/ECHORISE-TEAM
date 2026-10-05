@@ -10,7 +10,7 @@ const KB = [
   {
     key: 'spotify',
     patterns: ['spotify', 'monthly listeners', 'spotify listeners', 'spotify promotion', 'spotify plan', 'spotify package', 'streams', 'stream count'],
-    response: " **Spotify Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted listeners\n• Genre-matched audience\n• Campaign live within 72hrs\n• Completion report\n\n**Growth — $120**  Most Popular\n• 25,000 targeted listeners\n• Advanced genre targeting\n• Algorithm boost strategy\n• Campaign live within 48hrs\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted listeners\n• Global multi-genre reach\n• Genre-matched, broad-interest listeners\n• Continuous interaction & engagement\n• Full viral push strategy\n• Campaign live within 24hrs\n• Priority support + consultation\n\n**Custom — $50–$10,000**\n• Bespoke strategy for any goal\n\n All listeners are 100% real — no bots, fully ToS-compliant.\n\nWhich package fits your budget?"
+    response: " **Spotify Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted Audiences\n• Genre-matched audience\n• Campaign live within 24hrs\n• Completion report\n\n**Growth — $120**  Most Popular\n• 25,000 targeted Audiences\n• Advanced genre targeting\n• Algorithm boost strategy\n• Campaign live within 48hrs\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted Audiences\n• Global multi-genre reach\n• Genre-matched, broad-interest Audiences\n• Continuous interaction & engagement\n• Full viral push strategy\n• Campaign live within 72hrs\n• Priority support + consultation\n\n**Custom — $50–$10,000**\n• Bespoke strategy for any goal\n\n All listeners are 100% real — no bots, fully ToS-compliant.\n\nWhich package fits your budget?"
   },
   {
     key: 'soundcloud',
@@ -50,7 +50,7 @@ const KB = [
   {
     key: 'howlong',
     patterns: ['how long', 'when does', 'campaign start', 'when will', 'how fast', 'timeline', 'delivery time', 'when start', 'how soon', 'time frame'],
-    response: " **Campaign Timelines**\n\nAfter confirmed payment:\n\n• **Starter packages**  within **72 hours**\n• **Growth packages**  within **48 hours** \n• **Premium packages**  within **24 hours**\n• **Dance/TikTok**  delivered within **5 days**\n\nOnce live, you'll see growth in your Spotify for Artists / SoundCloud dashboard. A full analytics report is sent to you when the campaign ends. "
+    response: " **Campaign Timelines**\n\nAfter confirmed payment:\n\n• **Starter packages**  within **24 hours**\n• **Growth packages**  within **48 hours** \n• **Premium packages**  within **72 hours**\n• **Dance/TikTok**  delivered within **5 days**\n\nOnce live, you'll see growth in your Spotify for Artists / SoundCloud dashboard. A full analytics report is sent to you when the campaign ends. "
   },
   {
     key: 'real',
@@ -85,7 +85,7 @@ const KB = [
   {
     key: 'newartist',
     patterns: ['new artist', 'beginner', 'just starting', 'starting out', 'first time', 'brand new', 'no followers', 'small artist', 'unknown', 'grow my music'],
-    response: " **Best Package for New Artists**\n\nWelcome! Here's our recommendation:\n\n** Start with Spotify Growth — $120**\n• 25,000 real, targeted listeners\n• Algorithm boost — helps Spotify discover your music organically\n• Detailed analytics so you see real results\n• Campaign live within 48hrs\n\n**Why Growth over Starter?**\nThe 25,000 listener threshold tends to trigger Spotify's recommendation algorithm, giving your track continued organic reach after the campaign ends.\n\n**After your first campaign, consider:**\n• SoundCloud Growth ($120) — build community\n• Dance/TikTok 30s ($300) — viral potential\n\nMany artists start at $120 and scale up from there. \n\nReady to place your first order?"
+    response: " **Best Package for New Artists**\n\nWelcome! Here's our recommendation:\n\n** Start with Spotify Growth — $120**\n• 25,000 real, targeted Audiences\n• Algorithm boost — helps Spotify discover your music organically\n• Detailed analytics so you see real results\n• Campaign live within 48hrs\n\n**Why Growth over Starter?**\nThe 25,000 Audience threshold tends to trigger Spotify's recommendation algorithm, giving your track continued organic reach after the campaign ends.\n\n**After your first campaign, consider:**\n• SoundCloud Growth ($120) — build community\n• Dance/TikTok 30s ($300) — viral potential\n\nMany artists start at $120 and scale up from there. \n\nReady to place your first order?"
   },
   {
     key: 'invoice',

@@ -16,7 +16,7 @@ export default function PricingCard({ pkg, onOrder }) {
         <span className="text-lg" style={{ color: 'rgba(26,26,26,0.55)' }}>$</span>
         <span className={`font-display font-bold text-5xl ${pkg.popular ? 'grad-text' : ''}`} style={!pkg.popular ? { color: '#1A1A1A' } : {}}>{pkg.price}</span>
       </div>
-      <div className="text-xs mb-6" style={{ color: 'rgba(26,26,26,0.48)' }}>One-time campaign · {pkg.listeners} listeners</div>
+      <div className="text-xs mb-6" style={{ color: 'rgba(26,26,26,0.48)' }}>One-time campaign · {/^\d[\d,]*$/.test(String(pkg.listeners)) ? `${pkg.listeners} Audiences` : pkg.listeners}</div>
 
       <ul className="flex flex-col gap-3 mb-8 flex-1">
         {pkg.features.map(f => (
