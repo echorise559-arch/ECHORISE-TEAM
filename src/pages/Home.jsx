@@ -29,14 +29,6 @@ const SoundCloudIcon = ({ size = 22 }) => (
   </svg>
 )
 
-const ChartIcon = ({ size = 22 }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={size} height={size}>
-    <line x1="18" y1="20" x2="18" y2="10"/>
-    <line x1="12" y1="20" x2="12" y2="4"/>
-    <line x1="6" y1="20" x2="6" y2="14"/>
-  </svg>
-)
-
 const DanceIcon = ({ size = 22 }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" width={size} height={size}>
     <circle cx="12" cy="3" r="2"/>
@@ -111,14 +103,23 @@ const BulletDot = ({ color = '#FF6A00' }) => (
   </svg>
 )
 
+const PressIcon = ({ size = 22 }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={size} height={size}>
+    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+    <path d="M18 14h-8"/>
+    <path d="M15 18h-5"/>
+    <path d="M10 6h8v4h-8z"/>
+  </svg>
+)
+
 /* ── Data ─────────────────────────────────────────────────────────── */
 const SERVICES = [
-  { icon: <SpotifyIcon />,    title: 'Spotify Promotion',    desc: 'Targeted listener campaigns and algorithm-boosting strategies that put your track in front of people who actually engage.', to: '/spotify',    color: '#1DB954', bg: 'rgba(29,185,84,0.14)' },
+  { icon: <SpotifyIcon />,    title: 'Spotify Promotion',    desc: 'Targeted listener campaigns and curator and playlist outreach that puts your track in front of people who actually engage.', to: '/spotify',    color: '#1DB954', bg: 'rgba(29,185,84,0.14)' },
   { icon: <SoundCloudIcon />, title: 'SoundCloud Promotion', desc: "Build your SoundCloud presence from the ground up — real plays, followers, and reposts from your genre's core community.",  to: '/soundcloud', color: '#FF5500', bg: 'rgba(255,85,0,0.14)' },
-  { icon: <ChartIcon />,      title: 'Chart Promotion',       desc: 'From regional viral charts to the UK and USA Top 100 — we know how charts move, and we have the network to move yours.',      to: '/chart',      color: '#FF6A00', bg: 'rgba(255,106,0,0.10)' },
   { icon: <DanceIcon />,      title: 'Dance & TikTok Promo',  desc: 'Real creators on TikTok and Instagram Reels making authentic content around your track — the kind that sparks viral moments.',  to: '/dance',      color: '#4B3F72', bg: 'rgba(75,63,114,0.08)' },
-  { icon: <YouTubeIcon />,    title: 'YouTube Promotion',     desc: 'Grow your channel with real views, subscribers, and watch-time campaigns designed to trigger the YouTube algorithm in your favour.', to: '/youtube',  color: '#FF0000', bg: 'rgba(255,0,0,0.08)' },
+  { icon: <YouTubeIcon />,    title: 'YouTube Promotion',     desc: 'Grow your channel with real views, subscribers, and watch-time campaigns built on genuine viewers who choose to watch.', to: '/youtube',  color: '#FF0000', bg: 'rgba(255,0,0,0.08)' },
   { icon: <AppleMusicIcon />, title: 'Apple Music Promotion', desc: "Get your tracks onto Apple Music playlists, climb the Shazam chart, and build a loyal listener base on one of the world's top platforms.", to: '/apple-music', color: '#FC3C44', bg: 'rgba(252,60,68,0.08)' },
+  { icon: <PressIcon />,      title: 'Press Features',       desc: 'Get your story written and published on respected music and entertainment outlets, with links back to your music and a social post from each outlet.', to: '/press', color: '#FF6A00', bg: 'rgba(255,106,0,0.10)' },
 ]
 
 const ALL_PLATFORMS = [
@@ -138,7 +139,7 @@ const ALL_PLATFORMS = [
 
 const STATS = [
   { color: '#FF6A00', label: '1,400+ Artists Promoted' },
-  { color: '#FF6A00', label: '50M+ Streams Driven' },
+  { color: '#FF6A00', label: '50M+ Listens Reached' },
   { color: '#1DB954', label: '18+ Countries Reached' },
   { color: '#4B3F72', label: '24-Hour Response' },
 ]
@@ -146,7 +147,7 @@ const STATS = [
 const GENRES = ['Afrobeats','R&B','Hip-Hop','Electronic','Pop','Amapiano','Dancehall','Drill','Lo-Fi','House','Soul','Jazz Fusion','Trap','Latin','Alternative','Indie','UK Rap','Techno']
 
 export default function Home() {
-  useSEO({ title: 'Echorise Media | #1 Music Promotion Studio — Spotify, SoundCloud, YouTube & More', description: 'Real listeners. Real results. Echorise Media promotes your music on Spotify, SoundCloud, YouTube, Apple Music, TikTok & charts worldwide. 1,400+ artists promoted. 50M+ streams driven.', canonical: 'https://echorisemedia.com/' })
+  useSEO({ title: 'Echorise Media | #1 Music Promotion Studio — Spotify, SoundCloud, YouTube & More', description: 'Real listeners. Real results. Echorise Media promotes your music on Spotify, SoundCloud, YouTube, Apple Music, TikTok & more worldwide. 1,400+ artists promoted. 50M+ listens reached.', canonical: 'https://echorisemedia.com/' })
   const [orderOpen, setOrderOpen] = useState(false)
   const [orderPreselect, setOrderPreselect] = useState('')
   const [spotifyOpen, setSpotifyOpen] = useState(false)
@@ -185,7 +186,7 @@ export default function Home() {
               </h1>
 
               <p className="text-lg max-w-xl mb-10 leading-relaxed" style={{ color: '#6B6B6B' }}>
-                We don't just push your track — we architect its rise. Echorise Media connects your music with real listeners, real channels, and real momentum on the platforms that define careers.
+                We don't just share your track — we plan its rise. Echorise Media connects your music with real listeners, real channels, and real momentum on the platforms that define careers.
               </p>
 
               <div className="flex gap-4 flex-wrap mb-12">
@@ -220,7 +221,7 @@ export default function Home() {
                 <div className="absolute left-36 top-12 px-5 py-4 rounded-2xl font-display font-bold text-sm shadow-xl"
                   style={{ background: '#FF6A00', color: 'white', boxShadow: '0 4px 20px rgba(255,106,0,0.30)' }}>
                   <div className="text-2xl font-black">1,400+</div>
-                  <div className="text-white/80 text-xs">Artists Amplified</div>
+                  <div className="text-white/80 text-xs">Artists Promoted</div>
                 </div>
                 <div className="absolute right-0 bottom-32 px-4 py-3 rounded-xl shadow-xl flex items-center gap-3"
                   style={{ background: '#FFFFFF', border: '1px solid rgba(26,26,26,0.08)', boxShadow: '0 4px 16px rgba(26,26,26,0.08)' }}>
@@ -337,7 +338,7 @@ export default function Home() {
             <div className="absolute -bottom-5 -right-5 px-5 py-4 rounded-2xl font-display font-bold text-sm shadow-xl"
               style={{ background: '#FF6A00', color: 'white', boxShadow: '0 4px 20px rgba(255,106,0,0.30)' }}>
               <div className="text-2xl font-black">1,400+</div>
-              <div className="text-white/80 text-xs">Artists Amplified</div>
+              <div className="text-white/80 text-xs">Artists Promoted</div>
             </div>
             <div className="absolute -top-4 -left-4 px-4 py-3 rounded-xl shadow-xl"
               style={{ background: '#FFFFFF', border: '1px solid rgba(26,26,26,0.08)', boxShadow: '0 4px 16px rgba(26,26,26,0.08)' }}>
@@ -386,9 +387,9 @@ export default function Home() {
           <div>
             <span className="section-label" style={{ color: '#1DB954' }}>Custom Spotify Campaigns</span>
             <h2 className="font-display font-bold text-5xl mb-4" style={{ color: '#1A1A1A', letterSpacing: '-0.02em', fontFamily: 'Syne, sans-serif' }}>Your Sound. <span className="grad-text-spotify">Our Strategy.</span></h2>
-            <p className="mb-8" style={{ color: '#6B6B6B' }}>Not every artist fits a template. If you have a specific budget, target chart position, or niche audience in mind, our Spotify specialists will build a campaign around your exact goals.</p>
+            <p className="mb-8" style={{ color: '#6B6B6B' }}>Not every artist fits a template. If you have a specific budget, target market, or niche audience in mind, our Spotify specialists will build a campaign around your exact goals.</p>
             <ul className="flex flex-col gap-3 mb-8">
-              {['Bespoke promotion strategy for your genre','Target specific countries and listener demographics','Chart position targeting in selected markets','Custom proposal delivered within 24 hours'].map(item => (
+              {['Bespoke promotion strategy for your genre','Target specific countries and listener demographics','Genre and audience matched targeting','Custom proposal delivered within 24 hours'].map(item => (
                 <li key={item} className="flex items-center gap-3 text-sm" style={{ color: '#6B6B6B' }}>
                   <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0"
                     style={{ background: 'rgba(29,185,84,0.12)', border: '1.5px solid rgba(29,185,84,0.3)', color: '#1DB954' }}>✓</span>
@@ -412,7 +413,7 @@ export default function Home() {
                 <div className="text-xs mt-0.5" style={{ color: 'rgba(26,26,26,0.28)' }}>Tailored to your track & goals</div>
               </div>
             </div>
-            {[['Listener targeting','Custom'],['Chart position','Included'],['Budget range','$50 – $1,000+'],['Proposal turnaround','24 hours']].map(([k, v]) => (
+            {[['Listener targeting','Custom'],['Campaign reporting','Included'],['Budget range','$50 – $1,000+'],['Proposal turnaround','24 hours']].map(([k, v]) => (
               <div key={k} className="flex justify-between py-2.5 text-sm" style={{ borderBottom: '1px solid rgba(26,26,26,0.08)' }}>
                 <span style={{ color: 'rgba(107,107,107,0.90)' }}>{k}</span>
                 <span style={v === 'Custom' || v === 'Included' ? { color: '#1DB954', fontWeight: 700 } : { color: '#1A1A1A', fontWeight: 600 }}>{v}</span>
@@ -445,7 +446,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <span className="section-label">Artist Reviews</span>
-            <h2 className="font-display font-bold text-5xl mb-4" style={{ color: '#1A1A1A', letterSpacing: '-0.02em', fontFamily: 'Syne, sans-serif' }}>Artists We've <span className="grad-text">Amplified</span></h2>
+            <h2 className="font-display font-bold text-5xl mb-4" style={{ color: '#1A1A1A', letterSpacing: '-0.02em', fontFamily: 'Syne, sans-serif' }}>Artists We've <span className="grad-text">Promoted</span></h2>
             <p className="max-w-md mx-auto" style={{ color: '#6B6B6B' }}>Over 1,400 artists have trusted Echorise Media with their music. Here's what some of them had to say.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

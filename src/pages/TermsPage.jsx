@@ -72,7 +72,7 @@ export default function TermsPage() {
       <h2>5. Refunds and Delivery</h2>
       <p>
         Refunds, top ups, and delivery timeframes are covered in full in our{' '}
-        <a href="/refund-policy">Refund and Delivery Policy</a>, which forms
+        <a href="/refund-policy">Refund and Campaign Policy</a>, which forms
         part of these Terms.
       </p>
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { COUNTRIES, PLATFORMS, SPOTIFY_PACKAGES, SOUNDCLOUD_PACKAGES, CHART_PACKAGES, DANCE_PACKAGES } from '../data'
+import { COUNTRIES, PLATFORMS, SPOTIFY_PACKAGES, SOUNDCLOUD_PACKAGES, DANCE_PACKAGES } from '../data'
 import ModalPortal from './ModalPortal'
 import Honeypot from './Honeypot'
 import { submitForm } from '../utils/submitForm'
@@ -8,7 +8,6 @@ import { submitForm } from '../utils/submitForm'
 const ALL_PACKAGES = [
   ...SPOTIFY_PACKAGES.map(p => ({ ...p, label: `Spotify – ${p.name} ($${p.price})`, paymentLink: p.paymentLink || '' })),
   ...SOUNDCLOUD_PACKAGES.map(p => ({ ...p, label: `SoundCloud – ${p.name} ($${p.price})`, paymentLink: p.paymentLink || '' })),
-  ...CHART_PACKAGES.map(p => ({ ...p, label: `Chart – ${p.name} ($${p.price})`, paymentLink: p.paymentLink || '' })),
   ...DANCE_PACKAGES.map(p => ({ ...p, label: `Dance – ${p.name} ($${p.price})`, paymentLink: p.paymentLink || '' })),
   { id: 'custom', name: 'Custom', price: 0, label: 'Custom Campaign (Quote)', paymentLink: '' },
 ]

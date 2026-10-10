@@ -5,22 +5,17 @@ const KB = [
   {
     key: 'greeting',
     patterns: ['hello', 'hi', 'hey', 'good morning', 'good evening', 'good afternoon', 'sup', 'howdy', 'start'],
-    response: "Hey there!  Great to meet you. I'm **Aria**, your Echorise Media guide.\n\nI can help you with:\n•  Spotify, SoundCloud & Chart promotion\n•  Dance / TikTok campaigns\n•  Package pricing & what's best for you\n•  How payments & invoices work\n•  Getting your campaign started\n\nWhat are you working on with your music?"
+    response: "Hey there!  Great to meet you. I'm **Aria**, your Echorise Media guide.\n\nI can help you with:\n•  Spotify, SoundCloud & YouTube promotion\n•  Dance / TikTok campaigns\n•  Package pricing & what's best for you\n•  How payments & invoices work\n•  Getting your campaign started\n\nWhat are you working on with your music?"
   },
   {
     key: 'spotify',
     patterns: ['spotify', 'monthly listeners', 'spotify listeners', 'spotify promotion', 'spotify plan', 'spotify package', 'streams', 'stream count'],
-    response: " **Spotify Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted Audiences\n• Genre-matched audience\n• Campaign live within 24hrs\n• Completion report\n\n**Growth — $120**  Most Popular\n• 25,000 targeted Audiences\n• Advanced genre targeting\n• Algorithm boost strategy\n• Campaign live within 48hrs\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted Audiences\n• Global multi-genre reach\n• Genre-matched, broad-interest Audiences\n• Continuous interaction & engagement\n• Full viral push strategy\n• Campaign live within 72hrs\n• Priority support + consultation\n\n**Custom — $50–$10,000**\n• Bespoke strategy for any goal\n\n All listeners are 100% real — no bots, fully ToS-compliant.\n\nWhich package fits your budget?"
+    response: " **Spotify Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted Audiences\n• Genre-matched audience\n• Campaign live within 24hrs\n• Completion report\n\n**Growth — $120**  Most Popular\n• 25,000 targeted Audiences\n• Advanced genre targeting\n• Playlist and curator outreach\n• Campaign live within 48hrs\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted Audiences\n• Global multi-genre reach\n• Genre-matched, broad-interest Audiences\n• Continuous interaction & engagement\n• Full multi-channel promotion strategy\n• Campaign live within 72hrs\n• Priority support + consultation\n\n**Custom — $50–$10,000**\n• Bespoke strategy for any goal\n\n All listeners are 100% real — no bots, fully ToS-compliant.\n\nWhich package fits your budget?"
   },
   {
     key: 'soundcloud',
     patterns: ['soundcloud', 'sound cloud', 'sc plays', 'soundcloud plays', 'soundcloud promotion', 'soundcloud package'],
     response: " **SoundCloud Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted plays\n• Genre-matched listeners\n• Community reposts\n• Completion report\n\n**Growth — $120**  Most Popular\n• 25,000 targeted plays\n• Follower growth included\n• Priority channel placement\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted plays\n• Genre-matched, broad-interest listeners\n• Continuous interaction & engagement\n• Accelerated follower growth\n• Premium reposts network\n• Priority support\n\n All plays from real SoundCloud accounts — no bots.\n\nWhich one works for you?"
-  },
-  {
-    key: 'chart',
-    patterns: ['chart', 'billboard', 'chart promotion', 'top 100', 'uk chart', 'usa chart', 'charting', 'chart entry', 'chart package'],
-    response: " **Chart Promotion Packages**\n\n**Starter — $150**\n• Small markets: Iceland, Belarus, Luxembourg, Lithuania\n• Verified chart entry + monitoring\n\n**Growth — $250**  Most Popular\n• Mid-tier markets: Ukraine, Latvia, Estonia\n• Sustained multi-day campaign\n• Real-time monitoring + analytics\n\n**UK Top 100 — $2,200**\n• UK Top 100 chart target\n• Multi-week stream campaign\n• Press & blog outreach\n• Post-chart consultation\n\n**USA Top 100 — $3,500**\n• USA Top 100 chart target\n• Dedicated campaign manager\n• Full press, blog & media outreach\n\nWhich market are you targeting?"
   },
   {
     key: 'dance',
@@ -40,7 +35,7 @@ const KB = [
   {
     key: 'pricing',
     patterns: ['price', 'pricing', 'cost', 'how much', 'rates', 'fee', 'affordable', 'budget', 'packages', 'plans', 'what do you offer', 'all packages', 'all plans'],
-    response: " **Echorise Media — Full Price Overview**\n\n **Spotify** — $50 / $120 / $190 / Custom\n **SoundCloud** — $50 / $120 / $190\n **Chart Promotion** — $150 / $250 / $2,200 / $3,500\n **Dance/TikTok** — $150 / $300 / $1,000\n **YouTube** — Custom ($50–$10,000)\n **Apple Music** — Custom ($50–$10,000)\n\n For new artists, we recommend starting with **Spotify Growth at $120** — most popular, best value, real results.\n\nWhich platform are you most focused on?"
+    response: " **Echorise Media — Full Price Overview**\n\n **Spotify** — $50 / $120 / $190 / Custom\n **SoundCloud** — $50 / $120 / $190\n **Dance/TikTok** — $150 / $300 / $1,000\n **YouTube** — Custom ($50–$10,000)\n **Apple Music** — Custom ($50–$10,000)\n\n For new artists, we recommend starting with **Spotify Growth at $120** — most popular, best value, real results.\n\nWhich platform are you most focused on?"
   },
   {
     key: 'payment',
@@ -75,7 +70,7 @@ const KB = [
   {
     key: 'platforms',
     patterns: ['platform', 'platforms', 'which platform', 'all platforms', 'audiomack', 'boomplay', 'deezer', 'tidal', 'amazon music', 'pandora'],
-    response: " **Platforms We Promote On**\n\n Spotify\n SoundCloud\n YouTube\n Apple Music\n Billboard & Spotify Charts\n TikTok & Instagram Reels\n Audiomack\n Boomplay\n Deezer\n Tidal\n Amazon Music\n Pandora\n\nWhether your audience is in Africa, Europe, the USA or anywhere else — we have the right channels to reach them.\n\nWhich platform is most important for your music?"
+    response: " **Platforms We Promote On**\n\n Spotify\n SoundCloud\n YouTube\n Apple Music\n TikTok & Instagram Reels\n Audiomack\n Boomplay\n Deezer\n Tidal\n Amazon Music\n Pandora\n\nWhether your audience is in Africa, Europe, the USA or anywhere else — we have the right channels to reach them.\n\nWhich platform is most important for your music?"
   },
   {
     key: 'countries',
@@ -85,7 +80,7 @@ const KB = [
   {
     key: 'newartist',
     patterns: ['new artist', 'beginner', 'just starting', 'starting out', 'first time', 'brand new', 'no followers', 'small artist', 'unknown', 'grow my music'],
-    response: " **Best Package for New Artists**\n\nWelcome! Here's our recommendation:\n\n** Start with Spotify Growth — $120**\n• 25,000 real, targeted Audiences\n• Algorithm boost — helps Spotify discover your music organically\n• Detailed analytics so you see real results\n• Campaign live within 48hrs\n\n**Why Growth over Starter?**\nThe 25,000 Audience threshold tends to trigger Spotify's recommendation algorithm, giving your track continued organic reach after the campaign ends.\n\n**After your first campaign, consider:**\n• SoundCloud Growth ($120) — build community\n• Dance/TikTok 30s ($300) — viral potential\n\nMany artists start at $120 and scale up from there. \n\nReady to place your first order?"
+    response: " **Best Package for New Artists**\n\nWelcome! Here's our recommendation:\n\n** Start with Spotify Growth — $120**\n• 25,000 real, targeted Audiences\n• Curator and playlist outreach — helps real listeners discover your music organically\n• Detailed analytics so you see real results\n• Campaign live within 48hrs\n\n**Why Growth over Starter?**\nA 25,000 audience gives your track a wider base of real listeners, which can support continued organic discovery after the campaign ends.\n\n**After your first campaign, consider:**\n• SoundCloud Growth ($120) — build community\n• Dance/TikTok 30s ($300) — creator-led reach\n\nMany artists start at $120 and scale up from there. \n\nReady to place your first order?"
   },
   {
     key: 'invoice',
@@ -106,10 +101,15 @@ const KB = [
     key: 'analytics',
     patterns: ['analytics', 'report', 'stats', 'statistics', 'data', 'tracking', 'see results', 'metrics', 'how will i know'],
     response: " **Campaign Analytics & Reporting**\n\n**During your campaign:**\n• Real-time growth visible in your Spotify for Artists / SoundCloud dashboard\n• You can watch your numbers climb in real time \n\n**After your campaign:**\n• Detailed analytics report delivered to your email:\n  - Total listeners delivered\n  - Geographic breakdown\n  - Genre targeting accuracy\n  - Stream performance data\n\nGrowth and Premium packages include the most detailed reporting."
+  },
+  {
+    key: 'press',
+    patterns: ['press feature', 'press article', 'media coverage', 'media feature', 'news article', 'rapper journal', 'us times now', 'rapper hype', 'music star news', 'rapper daily', 'featured on'],
+    response: " **Press Features**\n\nWe get your story written and published on music and entertainment outlets:\n\n• Rapper Journal\n• US Times Now\n• Rapper Hype\n• Music Star News\n• Rapper Daily\n\n**Starter** — 1 outlet of your choice\n**Pro** — any 2 outlets\n**Elite** — all 5 outlets\n\nEvery package includes a professionally written article, a permanent link to your music, and a social media post from the outlet.\n\nVisit **echorisemedia.com/press** and tap **Request a Feature**, or email **support@echorisemedia.com**."
   }
 ]
 
-const FALLBACK = "Thanks for your message! \n\nI want to make sure you get the right answer. I can help with:\n\n•  Spotify, SoundCloud, Chart, Dance & YouTube packages\n•  Pricing & payment methods\n•  How to place an order\n•  Whether our promotion is safe & real\n•  How to contact our team\n\nOr reach us directly:\n **support@echorisemedia.com** — we reply within 24 hours!\n\nWhat would you like to know?"
+const FALLBACK = "Thanks for your message! \n\nI want to make sure you get the right answer. I can help with:\n\n•  Spotify, SoundCloud, Dance & YouTube packages\n•  Pricing & payment methods\n•  How to place an order\n•  Whether our promotion is safe & real\n•  How to contact our team\n\nOr reach us directly:\n **support@echorisemedia.com** — we reply within 24 hours!\n\nWhat would you like to know?"
 
 const QUICK_QUESTIONS = [
   { label: "Best package for a new artist?", key: 'newartist' },

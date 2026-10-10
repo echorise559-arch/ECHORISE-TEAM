@@ -1,7 +1,7 @@
 import useSEO from '../hooks/useSEO'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { COUNTRIES, PLATFORMS, SPOTIFY_PACKAGES, SOUNDCLOUD_PACKAGES, CHART_PACKAGES, DANCE_PACKAGES } from '../data'
+import { COUNTRIES, PLATFORMS, SPOTIFY_PACKAGES, SOUNDCLOUD_PACKAGES, DANCE_PACKAGES } from '../data'
 import PageHero from '../components/PageHero'
 import Honeypot from '../components/Honeypot'
 import { submitForm } from '../utils/submitForm'
@@ -9,7 +9,6 @@ import { submitForm } from '../utils/submitForm'
 const ALL_PACKAGES = [
   ...SPOTIFY_PACKAGES.map(p => ({ ...p, label: `Spotify – ${p.name}`, category: 'Spotify', paymentLink: p.paymentLink || '' })),
   ...SOUNDCLOUD_PACKAGES.map(p => ({ ...p, label: `SoundCloud – ${p.name}`, category: 'SoundCloud', paymentLink: p.paymentLink || '' })),
-  ...CHART_PACKAGES.map(p => ({ ...p, label: `Chart – ${p.name}`, category: 'Chart', paymentLink: p.paymentLink || '' })),
   ...DANCE_PACKAGES.map(p => ({ ...p, label: `Dance – ${p.name}`, category: 'Dance', paymentLink: p.paymentLink || '' })),
   { id: 'custom', name: 'Custom', price: 0, label: 'Custom Campaign', category: 'Custom', features: [], paymentLink: '' },
 ]
@@ -18,7 +17,7 @@ const INIT = { artistName: '', email: '', trackLink: '', platform: '', package: 
 
 // ── Main Order Page ───────────────────────────────────────────────────────────
 export default function OrderPage() {
-  useSEO({ title: 'Order Music Promotion | Echorise Media', description: 'Start your music promotion campaign today. Choose a Spotify, SoundCloud, YouTube, Apple Music, chart or TikTok package and get real results within 24-72 hours.', canonical: 'https://echorisemedia.com/order' })
+  useSEO({ title: 'Order Music Promotion | Echorise Media', description: 'Start your music promotion campaign today. Choose a Spotify, SoundCloud, YouTube, Apple Music or TikTok package and get real results within 24-72 hours.', canonical: 'https://echorisemedia.com/order' })
 
   const [form, setForm] = useState(INIT)
   const [errors, setErrors] = useState({})
@@ -133,7 +132,7 @@ export default function OrderPage() {
                   <label className="block text-xs font-display font-semibold text-muted mb-1.5 uppercase tracking-wider">Package *</label>
                   <select name="package" className={`form-input ${errors.package ? 'border-red-500' : ''}`} value={form.package} onChange={e => set('package', e.target.value)}>
                     <option value="">Select package</option>
-                    {['Spotify','SoundCloud','Chart','Dance','Custom'].map(cat => (
+                    {['Spotify','SoundCloud','Dance','Custom'].map(cat => (
                       <optgroup key={cat} label={`── ${cat} ──`}>
                         {ALL_PACKAGES.filter(p => p.category === cat).map(p => (
                           <option key={p.id} value={p.id}>{p.label} {p.price > 0 ? `($${p.price})` : ''}</option>

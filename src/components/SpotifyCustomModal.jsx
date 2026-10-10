@@ -204,7 +204,7 @@ export default function SpotifyCustomModal({ isOpen, onClose }) {
   )
 
   const platformLabels = {
-    spotify: { placeholder: 'https://open.spotify.com/track/...', hint: 'Targeted listeners, playlist placements, algorithm boost' },
+    spotify: { placeholder: 'https://open.spotify.com/track/...', hint: 'Targeted listeners, playlist placements, curator and playlist outreach' },
     youtube: { placeholder: 'https://www.youtube.com/watch?v=...', hint: 'Views, subscribers, channel growth & promotion campaigns' },
     apple: { placeholder: 'https://music.apple.com/...', hint: 'Apple Music streams, Shazam chart, playlist pitching' },
   }

@@ -51,7 +51,7 @@ export default function SoundCloudPage() {
       <PageHero
         label="SoundCloud Promotion"
         title={<>Build Your SoundCloud<br /><span style={{ background: 'linear-gradient(135deg,#FF5500,#FF8800)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Presence</span></>}
-        subtitle="We drive plays, followers, and reposts from engaged listeners in your genre's core community. Real growth. Real community."
+        subtitle="We connect you with plays, followers, and reposts from engaged listeners in your genre's core community. Real growth. Real community."
         accent="#FF5500"
         image="https://images.unsplash.com/photo-1540039155733-5bb30b4f5d54?w=900&h=700&fit=crop&crop=center"
       >

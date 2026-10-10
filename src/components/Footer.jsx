@@ -64,7 +64,7 @@ export default function Footer() {
             <div className="font-display font-bold text-2xl mb-3" style={{ color: 'white', letterSpacing: '-0.02em', fontWeight: 800 }}>
               <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, letterSpacing: '-0.04em' }}>echorise</span><span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, color: '#FF6A00' }}>.</span>
             </div>
-            <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.5)' }}>We amplify artists on the platforms that matter most. Real strategy. Real reach. Real results.</p>
+            <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.5)' }}>We promote artists to real listeners on the platforms that matter most. Real strategy. Real reach. Real people.</p>
             {socials.length > 0 && (
               <div className="flex gap-2.5">
                 {socials.map(({ Icon, color, href, label }) => (
@@ -84,7 +84,7 @@ export default function Footer() {
           <div>
             <h4 className="font-display font-semibold mb-4 text-sm" style={{ color: 'rgba(255,255,255,0.90)' }}>Services</h4>
             <div className="flex flex-col gap-2.5">
-              {[['Spotify Promotion', '/spotify', '#1DB954'], ['SoundCloud Promotion', '/soundcloud', '#FF5500'], ['Chart Promotion', '/chart', '#FF6A00'], ['Dance & Video Promo', '/dance', '#FF6A00'], ['YouTube Promotion', '/youtube', '#FF0000'], ['Apple Music Promotion', '/apple-music', '#FC3C44']].map(([l, to, color]) => (
+              {[['Spotify Promotion', '/spotify', '#1DB954'], ['SoundCloud Promotion', '/soundcloud', '#FF5500'], ['Dance & Video Promo', '/dance', '#FF6A00'], ['YouTube Promotion', '/youtube', '#FF0000'], ['Apple Music Promotion', '/apple-music', '#FC3C44'], ['Press Features', '/press', '#FF6A00']].map(([l, to, color]) => (
                 <Link key={to} to={to} className="text-sm transition-colors flex items-center gap-2 group" style={{ color: 'rgba(255,255,255,0.5)' }}
                   onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.90)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
@@ -111,7 +111,7 @@ export default function Footer() {
           <div>
             <h4 className="font-display font-semibold mb-4 text-sm" style={{ color: 'rgba(255,255,255,0.90)' }}>Legal</h4>
             <div className="flex flex-col gap-2.5">
-              {[['Company Information', '/legal'], ['Terms of Service', '/terms'], ['Privacy Policy', '/privacy'], ['Refund and Delivery Policy', '/refund-policy']].map(([l, to]) => (
+              {[['Company Information', '/legal'], ['Terms of Service', '/terms'], ['Privacy Policy', '/privacy'], ['Refund and Campaign Policy', '/refund-policy']].map(([l, to]) => (
                 <Link key={to} to={to} className="text-sm transition-colors" style={{ color: 'rgba(255,255,255,0.5)' }}
                   onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.90)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>{l}</Link>

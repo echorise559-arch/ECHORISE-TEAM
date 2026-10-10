@@ -29,7 +29,7 @@ const StarIcon = () => (
 
 const PLATFORMS = [
   { icon: <TikTokIcon />, label: 'TikTok', desc: 'The #1 music discovery platform. One viral dance challenge can reach millions.' },
-  { icon: <InstagramIcon />, label: 'Instagram Reels', desc: 'High-retention vertical content that drives follows, saves, and streams.' },
+  { icon: <InstagramIcon />, label: 'Instagram Reels', desc: 'High-retention vertical content that earns follows, saves, and streams.' },
   { icon: <PlayIcon />, label: 'YouTube Shorts', desc: 'Growing rapidly with high monetisation potential for your music.' },
   { icon: <StarIcon />, label: 'Real Creators', desc: "Every dancer is vetted, skilled, and chosen to match your track's energy." },
 ]

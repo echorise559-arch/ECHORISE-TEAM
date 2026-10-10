@@ -45,7 +45,7 @@ export const SPOTIFY_PACKAGES = [
     name: 'Growth',
     price: 120,
     listeners: '25,000',
-    features: ['25,000 targeted Audiences', 'Advanced genre targeting', 'Real, active Spotify users', 'Campaign live within 48hrs', 'Algorithm boost strategy', 'Detailed analytics report'],
+    features: ['25,000 targeted Audiences', 'Advanced genre targeting', 'Real, active Spotify users', 'Campaign live within 48hrs', 'Playlist & curator outreach', 'Detailed analytics report'],
     popular: true,
     cta: 'Get Started',
     paymentLink: 'https://nestuge.com/echorise2',
@@ -55,7 +55,7 @@ export const SPOTIFY_PACKAGES = [
     name: 'Premium',
     price: 190,
     listeners: '40,000',
-    features: ['40,000 targeted Audiences', 'Multi-genre & global reach', 'Genre-matched, broad-interest Audiences', 'Continuous interaction & engagement', 'Real, active Spotify users', 'Campaign live within 72hrs', 'Full viral push strategy', 'Priority support & updates', 'Post-campaign consultation'],
+    features: ['40,000 targeted Audiences', 'Multi-genre & global reach', 'Genre-matched, broad-interest Audiences', 'Continuous interaction & engagement', 'Real, active Spotify users', 'Campaign live within 72hrs', 'Full multi-channel promotion strategy', 'Priority support & updates', 'Post-campaign consultation'],
     popular: false,
     cta: 'Get Started',
     paymentLink: 'https://nestuge.com/echorise3',
@@ -92,49 +92,6 @@ export const SOUNDCLOUD_PACKAGES = [
     popular: false,
     cta: 'Get Started',
     paymentLink: 'https://nestuge.com/echorise3',
-  },
-]
-
-export const CHART_PACKAGES = [
-  {
-    id: 'chart-starter',
-    name: 'Starter',
-    price: 150,
-    listeners: 'Small markets',
-    features: ['Iceland', 'Belarus', 'Luxembourg', 'Lithuania', 'Verified chart entry', 'Stream injection campaign', 'Chart monitoring included'],
-    popular: false,
-    cta: 'Get Started',
-    paymentLink: 'https://nestuge.com/echorise7',
-  },
-  {
-    id: 'chart-growth',
-    name: 'Growth',
-    price: 250,
-    listeners: 'Mid-tier markets',
-    features: ['Ukraine', 'Latvia', 'Estonia', 'Verified chart entry', 'Sustained multi-day campaign', 'Cross-channel strategy', 'Real-time monitoring', 'Analytics report'],
-    popular: true,
-    cta: 'Get Started',
-    paymentLink: 'https://nestuge.com/echorise8',
-  },
-  {
-    id: 'chart-uk',
-    name: 'UK Top 100',
-    price: 2200,
-    listeners: 'UK Top 100',
-    features: ['UK Top 100 chart target', 'Premium channel network', 'Multi-week stream campaign', 'Press & blog outreach', 'Priority support', 'Post-chart consultation'],
-    popular: false,
-    cta: 'Get Started',
-    paymentLink: 'https://nestuge.com/echorise9',
-  },
-  {
-    id: 'chart-usa',
-    name: 'USA Top 100',
-    price: 3500,
-    listeners: 'USA Top 100',
-    features: ['USA Top 100 chart target', 'Elite channel network', 'Multi-week stream campaign', 'Press, blog & media outreach', 'Dedicated campaign manager', 'Priority support', 'Post-chart consultation'],
-    popular: false,
-    cta: 'Get Started',
-    paymentLink: 'https://nestuge.com/echorise10',
   },
 ]
 
@@ -284,7 +241,7 @@ export const REVIEWS = [
     genre: 'Electronic Producer',
     date: 'December 2024',
     stars: 4,
-    text: "The SoundCloud campaign was well-executed. I gained around 1,800 followers and noticed consistent plays over several weeks rather than one spike. My only slight note is that I expected a bit more communication mid-campaign, but the end result was solid.",
+    text: "The SoundCloud campaign was well-executed. I gained around 1,800 followers and noticed consistent plays over several weeks rather than a single burst. My only slight note is that I expected a bit more communication mid-campaign, but the end result was solid.",
     reply: "Nina, thank you for the honest feedback — we've taken note and improved our mid-campaign check-in process. Really glad the results held up. Your production style worked beautifully with the audience we targeted.",
     gradient: 'from-purple-700 to-purple-900',
   },
@@ -297,16 +254,6 @@ export const REVIEWS = [
     text: "I used the Dance Video Promotion for a single I dropped in February. Within a week I had 10 different creators posting clips and my TikTok views went from a few hundred per video to tens of thousands. The dancers they used were genuinely good, the content felt organic, and two of the videos got picked up by bigger accounts independently.",
     reply: "Andre, the Dance Challenge package was a perfect fit for your track — that bassline was made for content. Seeing the organic spread after the initial placements was exactly what we aimed for.",
     gradient: 'from-green-800 to-green-900',
-  },
-  {
-    name: 'Selin H.',
-    flag: '🇸🇪', country: 'Sweden',
-    genre: 'Pop Artist',
-    date: 'February 2025',
-    stars: 5,
-    text: "I went for the Chart Promotion in Iceland and Lithuania as a test to see if a chart placement would make a difference. It did. My profile started getting taken more seriously by labels I'd been approaching — a chart position in any market gives you credibility.",
-    reply: "Selin, using chart placement as a credibility signal for label outreach is exactly the right strategy, and we're glad it worked. Best of luck with the label conversations!",
-    gradient: 'from-teal-800 to-teal-900',
   },
   {
     name: 'Damien G.',
@@ -339,16 +286,6 @@ export const REVIEWS = [
     gradient: 'from-rose-800 to-rose-900',
   },
   {
-    name: 'Pablo V.',
-    flag: '🇪🇸', country: 'Spain',
-    genre: 'Latin / Reggaeton Artist',
-    date: 'January 2025',
-    stars: 5,
-    text: "My label uses Echorise for all our independent releases now. The chart campaign in Latvia and Estonia generated press coverage in those markets that we then leveraged for booking conversations in Eastern Europe. This is a professional operation.",
-    reply: "Pablo, using chart placements to open booking markets is a strategy we genuinely believe in. Thank you for the continued trust from your label.",
-    gradient: 'from-red-800 to-red-900',
-  },
-  {
     name: 'Olivia T.',
     flag: '🇦🇺', country: 'Australia',
     genre: 'Pop / Bedroom Pop Artist',
@@ -364,7 +301,7 @@ export const REVIEWS = [
     genre: 'Singer-Songwriter',
     date: 'February 2025',
     stars: 5,
-    text: "I've been writing songs for years and this was my first real push. I ended up with listeners from 11 different countries. As someone who's been making music in my bedroom, seeing those numbers on a world map was genuinely emotional. Thank you, Echorise.",
+    text: "I've been writing songs for years and this was my first real promotion push. I ended up with listeners from 11 different countries. As someone who's been making music in my bedroom, seeing those numbers on a world map was genuinely emotional. Thank you, Echorise.",
     reply: "Erin, this is exactly why we do this. Your songwriting deserves a global audience and we're honoured to have been part of that first step. Don't stop.",
     gradient: 'from-emerald-800 to-emerald-900',
   },
@@ -435,7 +372,7 @@ export const REVIEWS = [
     date: 'January 2025',
     stars: 4,
     text: "The SoundCloud Starter package was decent for the price. I saw steady plays and some genuine follower growth. As an indie rock artist I was a bit uncertain whether the audience would be right but the engagement was better than I expected. I'd probably go with the Growth package next time.",
-    reply: "George, indie rock on SoundCloud has a dedicated community and your track connected well with it. The Growth package would definitely amplify things further — whenever you're ready.",
+    reply: "George, indie rock on SoundCloud has a dedicated community and your track connected well with it. The Growth package would definitely widen your reach further — whenever you're ready.",
     gradient: 'from-[#3D2B1A] to-[#1A1A1A]',
   },
   {
@@ -454,7 +391,7 @@ export const REVIEWS = [
 export const FAQ = [
   {
     q: 'Are the streams and listeners real?',
-    a: "Yes — always. Every listener we drive is a real human being with a genuine Spotify account. We never use bots, fake accounts, or artificial plays. Our network consists of real channels, blogs, and engaged listener communities built over years.",
+    a: "Yes — always. Every listener we reach is a real human being with a genuine Spotify account. We never use bots, fake accounts, or artificial plays. Our network consists of real channels, blogs, and engaged listener communities built over years.",
   },
   {
     q: 'How long does a campaign take to start?',
@@ -462,7 +399,7 @@ export const FAQ = [
   },
   {
     q: 'Will this affect my Spotify for Artists data?',
-    a: "Yes, positively. You'll see organic-looking listener growth, increased saves and channel adds, improved algorithm visibility. Because our traffic is real, Spotify's algorithm interprets it as genuine engagement, which can trigger additional algorithmic exposure.",
+    a: "Yes, positively. You'll see genuine listener growth, increased saves and channel adds, better discovery. Because our listeners are real, Spotify's algorithm interprets it as genuine engagement, which may lead to further discovery on the platform.",
   },
   {
     q: 'Can I target specific countries or genres?',
@@ -470,11 +407,11 @@ export const FAQ = [
   },
   {
     q: "Do you offer refunds if results aren't delivered?",
-    a: "If we fail to deliver the promised listener numbers or placements within the agreed timeframe, we'll either top up the campaign at no charge or issue a full refund — your choice.",
+    a: "If we fail to reach the promised audience or placements within the agreed timeframe, we'll either top up the campaign at no charge or issue a full refund — your choice.",
   },
   {
     q: 'What makes Echorise different from other services?',
-    a: "Three things: genuine traffic only (no bots ever), campaign-end reporting with real analytics, and a team that actually knows music. We're not a click-farm with a website. We're strategists who've been working in the music industry for years.",
+    a: "Three things: genuine listeners only (no bots ever), campaign-end reporting with real analytics, and a team that actually knows music. We're not a click-farm with a website. We're strategists who've been working in the music industry for years.",
   },
   {
     q: 'Can independent artists use your services?',
@@ -489,13 +426,13 @@ export const FAQ = [
 // ─── STATS ───────────────────────────────────────────────────────────────────
 export const STATS = [
   { value: 1400, suffix: '+', label: 'Artists Promoted' },
-  { value: 50, suffix: 'M+', label: 'Streams Driven' },
+  { value: 50, suffix: 'M+', label: 'Listens Reached' },
   { value: 18, suffix: '+', label: 'Countries Reached' },
   { value: 98, suffix: '%', label: 'Client Satisfaction' },
   { value: 24, suffix: 'hr', label: 'Response Time' },
 ]
 
-export const PLATFORMS = ['Spotify', 'SoundCloud', 'Spotify Chart', 'Dance / TikTok', 'YouTube', 'Apple Music']
+export const PLATFORMS = ['Spotify', 'SoundCloud', 'Dance / TikTok', 'YouTube', 'Apple Music']
 
 // ─── VIDEO TESTIMONIALS ─────────────────────────────────────────────────────
 // Real video reviews from past clients. No names, handles or campaign/service

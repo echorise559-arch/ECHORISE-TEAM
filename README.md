@@ -32,7 +32,6 @@ src/
     Home.jsx              # Full homepage
     SpotifyPage.jsx       # Spotify promotion page
     SoundCloudPage.jsx    # SoundCloud promotion page
-    ChartPage.jsx         # Chart promotion page
     DancePage.jsx         # Dance video promotion page
     ContactPage.jsx       # Contact form page (emailed to the team)
     AdminArtistsPage.jsx  # Hidden dashboard at /admin/artists
@@ -103,6 +102,7 @@ details through Brevo to `NOTIFY_EMAILS`. The visitor only sees a success messag
 email, and sees an error message if it does not. Forms covered:
 - **Contact** page
 - **Custom promotion request** (Spotify, YouTube, Apple Music)
+- **Press Features request** on `/press` (sent as a custom request with the package and outlets in the notes)
 - **Invoice request** inside the custom request popup
 - **Order** popup and the **Order** page (sent before the visitor is taken to the payment page)
 

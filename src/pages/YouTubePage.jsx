@@ -38,7 +38,7 @@ const ShieldIcon = () => (
 )
 
 const FEATURES = [
-  { icon: <PlayIcon />, title: 'Real YouTube Views', desc: 'Drive genuine views from real YouTube users — boosting watch time, engagement, and channel authority.' },
+  { icon: <PlayIcon />, title: 'Real YouTube Views', desc: 'Reach genuine viewers on YouTube, building real watch time, engagement, and channel authority.' },
   { icon: <TrendingUpIcon />, title: 'Subscriber Growth', desc: 'Grow your subscriber base with targeted campaigns reaching fans who love your music genre.' },
   { icon: <TargetIcon />, title: 'Audience Targeting', desc: 'Target viewers by genre, region, age, and listening habits for maximum engagement rates.' },
   { icon: <Bell size={22} strokeWidth={2} />, title: 'Algorithm Signals', desc: 'Strategic watch patterns that signal strong content quality to the YouTube algorithm.' },
@@ -49,12 +49,12 @@ const FEATURES = [
 const HOW_IT_WORKS = [
   ['01', 'Submit Your Video', 'Share your YouTube link and tell us your goals — more views, subscribers, or both.'],
   ['02', 'Campaign Strategy', 'We map out the best targeting approach based on your genre, region, and audience.'],
-  ['03', 'Campaign Launch', 'We start driving real viewers to your video with strategic promotion.'],
+  ['03', 'Campaign Launch', 'We start sharing your video with real viewers through strategic promotion.'],
   ['04', 'Growth & Report', 'Watch your channel stats grow and receive a full analytics report at campaign end.'],
 ]
 
 export default function YouTubePage() {
-  useSEO({ title: 'YouTube Music Promotion | Echorise Media — Real Views & Subscribers', description: 'Grow your YouTube channel with real views, subscribers and watch-time campaigns. Echorise Media triggers the YouTube algorithm to work in your favour. Results guaranteed.', canonical: 'https://echorisemedia.com/youtube' })
+  useSEO({ title: 'YouTube Music Promotion | Echorise Media — Real Views & Subscribers', description: 'Grow your YouTube channel with real views, subscribers and watch-time campaigns. Echorise Media promotes your video to real viewers who choose to watch.', canonical: 'https://echorisemedia.com/youtube' })
   const [orderOpen, setOrderOpen] = useState(false)
   const [customOpen, setCustomOpen] = useState(false)
 
@@ -63,7 +63,7 @@ export default function YouTubePage() {
       <PageHero
         label="YouTube Promotion"
         title={<>Grow Your YouTube<br /><span style={{ background: 'linear-gradient(135deg,#FF0000,#cc0000)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Channel</span></>}
-        subtitle="Real views, real subscribers, and algorithm-boosting strategies. No bots. No risk. Just genuine growth that builds your YouTube presence."
+        subtitle="Real views, real subscribers, and genuine audience building. No bots. No risk. Just genuine growth that builds your YouTube presence."
         accent="#FF0000"
         image="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&h=700&fit=crop&crop=center"
       >
@@ -121,8 +121,8 @@ export default function YouTubePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
             {[
               { range: '$50 – $200', label: 'Starter', desc: 'Great for new artists. Build initial view counts and channel credibility.' },
-              { range: '$200 – $1,000', label: 'Growth', desc: 'Drive significant views, growing watch time and subscriber velocity.' },
-              { range: '$1,000 – $10,000', label: 'Premium', desc: 'Full viral push strategy with multi-channel promotion and priority support.' },
+              { range: '$200 – $1,000', label: 'Growth', desc: 'Reach a wider audience with growing watch time and new subscribers.' },
+              { range: '$1,000 – $10,000', label: 'Premium', desc: 'Full multi-channel promotion strategy with multi-channel promotion and priority support.' },
             ].map(tier => (
               <div key={tier.label} className="glass-card p-6 text-left">
                 <div className="font-display font-black text-2xl mb-1" style={{ color: '#FF0000' }}>{tier.range}</div>
@@ -144,7 +144,7 @@ export default function YouTubePage() {
           <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=500&fit=crop&crop=center" alt="YouTube studio" className="w-full h-full object-cover" />
           <div className="absolute inset-0 flex items-center justify-center flex-col text-center p-8" style={{ background: 'linear-gradient(135deg,rgba(255,0,0,0.85),rgba(180,0,0,0.8))' }}>
             <h3 className="font-display font-bold text-3xl text-white mb-3" style={{ letterSpacing: '-0.02em' }}>Ready to grow your YouTube?</h3>
-            <p className="text-white/80 mb-6 max-w-md">Join thousands of artists who've amplified their music with Echorise.</p>
+            <p className="text-white/80 mb-6 max-w-md">Join thousands of artists who've promoted their music with Echorise.</p>
             <button onClick={() => { setCustomOpen(true) }} className="px-8 py-3.5 rounded-full font-display font-bold text-sm cursor-pointer transition-all hover:-translate-y-1 hover:shadow-lg" style={{ background: '#FF0000', color: '#fff' }}>
               Get Started →
             </button>

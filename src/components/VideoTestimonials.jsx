@@ -170,7 +170,7 @@ export default function VideoTestimonials() {
             ))}
           </div>
           <p className="text-xs text-center mt-8" style={{ color: 'rgba(107,107,107,0.90)' }}>
-            Every campaign follows each platform's terms of service. If we miss the promised numbers, we top up your campaign or refund you.
+            Every campaign follows each platform's terms of service. If we fall short of the promised audience, we top up your campaign or refund you.
           </p>
         </div>
       </div>

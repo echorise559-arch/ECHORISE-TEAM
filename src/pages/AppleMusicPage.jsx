@@ -33,9 +33,9 @@ const TrendingUpIcon = () => (
 )
 
 const FEATURES = [
-  { icon: <AppleMusicIcon />, title: 'Apple Music Streams', desc: 'Drive real streams from genuine Apple Music listeners in your target markets and genres.' },
+  { icon: <AppleMusicIcon />, title: 'Apple Music Streams', desc: 'Reach genuine Apple Music listeners in your target markets and genres.' },
   { icon: <ClipboardList size={22} strokeWidth={2} />, title: 'Playlist Pitching', desc: 'We pitch your track to Apple Music curators for editorial playlist consideration.' },
-  { icon: <BarChartIcon />, title: 'Shazam Chart Push', desc: 'Strategic placements that boost your Shazam chart position and discovery rate.' },
+  { icon: <BarChartIcon />, title: 'Shazam Discovery', desc: 'Strategic placements that put your track in front of people who use Shazam to discover music.' },
   { icon: <GlobeIcon />, title: 'Geographic Targeting', desc: 'Target listeners in specific countries where your sound resonates most strongly.' },
   { icon: <Bell size={22} strokeWidth={2} />, title: 'New Artist Spotlight', desc: 'Eligible artists get pitched to Apple\'s New Artist Spotlight editorial team.' },
   { icon: <TrendingUpIcon />, title: 'Analytics Report', desc: 'Full Apple Music for Artists report showing stream growth, listener territories, and more.' },
@@ -58,7 +58,7 @@ export default function AppleMusicPage() {
       <PageHero
         label="Apple Music Promotion"
         title={<>Grow on<br /><span style={{ background: 'linear-gradient(135deg,#FC3C44,#fa233b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Apple Music</span></>}
-        subtitle="Real streams, playlist pitching, Shazam chart pushes, and Apple Music editorial targeting. Built for artists serious about the Apple ecosystem."
+        subtitle="Real streams, playlist pitching, Shazam discovery campaigns, and Apple Music editorial targeting. Built for artists serious about the Apple ecosystem."
         accent="#FC3C44"
         image="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=900&h=700&fit=crop&crop=center"
       >
@@ -116,8 +116,8 @@ export default function AppleMusicPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
             {[
               { range: '$50 – $200', label: 'Starter', desc: 'Build stream counts and Shazam chart presence for emerging artists.' },
-              { range: '$200 – $1,000', label: 'Growth', desc: 'Playlist pitching + stream campaign to push into editorial consideration.' },
-              { range: '$1,000 – $10,000', label: 'Premium', desc: 'Full editorial pitch, multi-market push, Shazam chart targeting and more.' },
+              { range: '$200 – $1,000', label: 'Growth', desc: 'Playlist pitching + listener campaign to support editorial consideration.' },
+              { range: '$1,000 – $10,000', label: 'Premium', desc: 'Full editorial pitch, multi-market promotion, Shazam chart targeting and more.' },
             ].map(tier => (
               <div key={tier.label} className="glass-card p-6 text-left">
                 <div className="font-display font-black text-2xl mb-1" style={{ color: '#FC3C44' }}>{tier.range}</div>
@@ -139,7 +139,7 @@ export default function AppleMusicPage() {
           <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=1200&h=500&fit=crop&crop=center" alt="Apple Music" className="w-full h-full object-cover" />
           <div className="absolute inset-0 flex items-center justify-center flex-col text-center p-8" style={{ background: 'linear-gradient(135deg,rgba(252,60,68,0.88),rgba(200,30,40,0.85))' }}>
             <h3 className="font-display font-bold text-3xl text-white mb-3" style={{ letterSpacing: '-0.02em' }}>Ready to grow on Apple Music?</h3>
-            <p className="text-white/80 mb-6 max-w-md">Join 1,400+ artists who've amplified their music with Echorise.</p>
+            <p className="text-white/80 mb-6 max-w-md">Join 1,400+ artists who've promoted their music with Echorise.</p>
             <button onClick={() => { setCustomOpen(true) }} className="px-8 py-3.5 rounded-full font-display font-bold text-sm cursor-pointer transition-all hover:-translate-y-1 hover:shadow-lg" style={{ background: '#FC3C44', color: '#fff' }}>
               Get Started →
             </button>

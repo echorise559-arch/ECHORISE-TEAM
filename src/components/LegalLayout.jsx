@@ -21,7 +21,7 @@ export default function LegalLayout({ label, title, updated, children }) {
             <Link to="/legal" className="hover:underline" style={{ color: '#FF6A00' }}>Company Information</Link>
             <Link to="/terms" className="hover:underline" style={{ color: '#FF6A00' }}>Terms of Service</Link>
             <Link to="/privacy" className="hover:underline" style={{ color: '#FF6A00' }}>Privacy Policy</Link>
-            <Link to="/refund-policy" className="hover:underline" style={{ color: '#FF6A00' }}>Refund and Delivery Policy</Link>
+            <Link to="/refund-policy" className="hover:underline" style={{ color: '#FF6A00' }}>Refund and Campaign Policy</Link>
           </div>
         </div>
       </section>

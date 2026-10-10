@@ -13,7 +13,7 @@ const COMMITMENTS = [
   {
     Icon: RefreshCcw,
     title: 'Top-up or refund',
-    text: 'If we miss the promised numbers within the agreed timeframe, we top up your campaign at no charge or refund you in full. Your choice.',
+    text: 'If we fall short of the promised audience within the agreed timeframe, we top up your campaign at no charge or refund you in full. Your choice.',
   },
   {
     Icon: BarChart3,

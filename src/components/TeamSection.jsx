@@ -50,7 +50,7 @@ export default function TeamSection() {
             The Team Behind <em>Echorise</em>
           </h2>
           <p className="tm-lede">
-            {TEAM.length} music industry professionals dedicated to amplifying every artist we work with.
+            {TEAM.length} music industry professionals dedicated to promoting every artist we work with.
           </p>
 
           <dl className="tm-facts">

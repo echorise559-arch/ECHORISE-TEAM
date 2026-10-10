@@ -6,10 +6,10 @@ const NAV_LINKS = [
   { to: '/', label: 'Home' },
   { to: '/spotify', label: 'Spotify' },
   { to: '/soundcloud', label: 'SoundCloud' },
-  { to: '/chart', label: 'Chart Promo' },
   { to: '/dance', label: 'Dance Video' },
   { to: '/youtube', label: 'YouTube' },
   { to: '/apple-music', label: 'Apple Music' },
+  { to: '/press', label: 'Press' },
   { to: '/contact', label: 'Contact' },
 ]
 
@@ -31,7 +31,7 @@ export default function Navbar() {
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'}`}
         style={{ background: scrolled ? 'rgba(250,247,242,0.97)' : 'transparent', backdropFilter: scrolled ? 'blur(24px)' : 'none', borderBottom: scrolled ? '1px solid rgba(26,26,26,0.08)' : 'none' }}>
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between gap-8">
+        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link to="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'baseline' }}>
             <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '1.35rem', letterSpacing: '-0.04em', color: '#1A1A1A', lineHeight: 1 }}>echorise</span><span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '1.35rem', color: '#FF6A00', lineHeight: 1 }}>.</span>

@@ -50,7 +50,7 @@ export default function LegalInfoPage() {
       <p>
         See our <a href="/terms">Terms of Service</a>,{' '}
         <a href="/privacy">Privacy Policy</a>, and{' '}
-        <a href="/refund-policy">Refund and Delivery Policy</a> for the terms that
+        <a href="/refund-policy">Refund and Campaign Policy</a> for the terms that
         govern use of this website and our services.
       </p>
     </LegalLayout>
