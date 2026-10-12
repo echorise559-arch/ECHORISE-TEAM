@@ -124,6 +124,15 @@ section stays hidden while all three slots are empty. Artist of the Year appears
 `/admin/invoice` uses the same password. The invoice email function (`send-email`) only accepts requests
 from a signed-in admin.
 
+## Artist Services ($5 and $10)
+
+Six affordable services for independent artists live in the "Artist Services" section of the home page
+(`/#artist-services`). Everything is defined in `src/data/artistServices.js`:
+
+- `PAYMENT_LINKS` holds the only two payment pages: `$5` goes to `https://nestuge.com/echorise43`, `$10` goes to `https://nestuge.com/echorise44`. Both charge a fixed amount, so the price a visitor picks is the only thing that selects the link.
+- Cover Artwork and YouTube Thumbnail are sold at `$5` or `$10`. The wording of the two options is in `TIERS`.
+- `src/components/ServiceOrderModal.jsx` collects the brief, emails it to the team through the existing `submit` function (as an `order`), then opens the payment page. If the email step fails, the customer is still sent to pay and is told to email the brief to support.
+
 ## Activating Payments
 Contact the Echorise Media dev team to configure the payment gateway integration in `src/components/PaymentModal.jsx`.
 

@@ -64,7 +64,7 @@ export default function Footer() {
             <div className="font-display font-bold text-2xl mb-3" style={{ color: 'white', letterSpacing: '-0.02em', fontWeight: 800 }}>
               <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, letterSpacing: '-0.04em' }}>echorise</span><span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, color: '#FF6A00' }}>.</span>
             </div>
-            <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.5)' }}>We promote artists to real listeners on the platforms that matter most. Real strategy. Real reach. Real people.</p>
+            <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.5)' }}>We promote artists to engaged listeners on the platforms that matter most. Clear strategy. Genuine reach.</p>
             {socials.length > 0 && (
               <div className="flex gap-2.5">
                 {socials.map(({ Icon, color, href, label }) => (

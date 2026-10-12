@@ -10,12 +10,12 @@ const KB = [
   {
     key: 'spotify',
     patterns: ['spotify', 'monthly listeners', 'spotify listeners', 'spotify promotion', 'spotify plan', 'spotify package', 'streams', 'stream count'],
-    response: " **Spotify Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted Audiences\n• Genre-matched audience\n• Campaign live within 24hrs\n• Completion report\n\n**Growth — $120**  Most Popular\n• 25,000 targeted Audiences\n• Advanced genre targeting\n• Playlist and curator outreach\n• Campaign live within 48hrs\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted Audiences\n• Global multi-genre reach\n• Genre-matched, broad-interest Audiences\n• Continuous interaction & engagement\n• Full multi-channel promotion strategy\n• Campaign live within 72hrs\n• Priority support + consultation\n\n**Custom — $50–$10,000**\n• Bespoke strategy for any goal\n\n All listeners are 100% real — no bots, fully ToS-compliant.\n\nWhich package fits your budget?"
+    response: " **Spotify Promotion Packages**\n\n**Starter — $50**\n• Promotion to 10,000 targeted listeners\n• Genre-matched audience\n• Campaign live within 24hrs\n• Completion report\n\n**Growth — $120**  Most Popular\n• Promotion to 25,000 targeted listeners\n• Advanced genre targeting\n• Playlist and curator outreach\n• Campaign live within 48hrs\n• Detailed analytics report\n\n**Premium — $190**\n• Promotion to 40,000 targeted listeners\n• Global multi-genre reach\n• Genre-matched, broad-interest Audiences\n• Continuous interaction & engagement\n• Full multi-channel promotion strategy\n• Campaign live within 72hrs\n• Priority support + consultation\n\n**Custom — $50–$10,000**\n• Bespoke strategy for any goal\n\n Organic, genre-matched promotion that is fully ToS-compliant.\n\nWhich package fits your budget?"
   },
   {
     key: 'soundcloud',
     patterns: ['soundcloud', 'sound cloud', 'sc plays', 'soundcloud plays', 'soundcloud promotion', 'soundcloud package'],
-    response: " **SoundCloud Promotion Packages**\n\n**Starter — $50**\n• 10,000 targeted plays\n• Genre-matched listeners\n• Community reposts\n• Completion report\n\n**Growth — $120**  Most Popular\n• 25,000 targeted plays\n• Follower growth included\n• Priority channel placement\n• Detailed analytics report\n\n**Premium — $190**\n• 40,000 targeted plays\n• Genre-matched, broad-interest listeners\n• Continuous interaction & engagement\n• Accelerated follower growth\n• Premium reposts network\n• Priority support\n\n All plays from real SoundCloud accounts — no bots.\n\nWhich one works for you?"
+    response: " **SoundCloud Promotion Packages**\n\n**Starter — $50**\n• Promotion to 10,000 targeted listeners\n• Genre-matched listeners\n• Community reposts\n• Completion report\n\n**Growth — $120**  Most Popular\n• Promotion to 25,000 targeted listeners\n• Follower growth included\n• Priority channel placement\n• Detailed analytics report\n\n**Premium — $190**\n• Promotion to 40,000 targeted listeners\n• Genre-matched, broad-interest listeners\n• Continuous interaction & engagement\n• Accelerated follower growth\n• Premium reposts network\n• Priority support\n\n Promoted to engaged SoundCloud communities, fully ToS-compliant.\n\nWhich one works for you?"
   },
   {
     key: 'dance',
@@ -30,7 +30,7 @@ const KB = [
   {
     key: 'applemusic',
     patterns: ['apple music', 'apple', 'itunes', 'shazam', 'apple music promotion'],
-    response: " **Apple Music Promotion**\n\nWe offer custom Apple Music campaigns including:\n\n•  Stream growth campaigns\n•  Shazam chart targeting\n•  Playlist pitching\n•  Region-specific targeting\n\n**Pricing: $50–$10,000** depending on scope.\n\nClick **\"Order Now\"** on the site and select Apple Music — or email **support@echorisemedia.com** for a custom quote."
+    response: " **Apple Music Promotion**\n\nWe offer custom Apple Music campaigns including:\n\n•  Audience growth campaigns\n•  Shazam chart targeting\n•  Playlist pitching\n•  Region-specific targeting\n\n**Pricing: $50–$10,000** depending on scope.\n\nClick **\"Order Now\"** on the site and select Apple Music — or email **support@echorisemedia.com** for a custom quote."
   },
   {
     key: 'pricing',
@@ -50,7 +50,7 @@ const KB = [
   {
     key: 'real',
     patterns: ['real', 'fake', 'bots', 'legit', 'safe', 'tos', 'terms of service', 'ban', 'banned', 'trustworthy', 'genuine', 'authentic', 'real listeners', 'real plays', 'risky'],
-    response: " **100% Real — No Bots, Ever**\n\n•  All listeners are **real, active users** — never bots\n•  Fully **ToS-compliant** with Spotify, SoundCloud & all platforms\n•  Your account will **never be at risk** of a ban\n•  Engagement from genuine genre-matched audiences\n•  **1,400+ artists** served worldwide\n\nWe've grown artists like **d4vd** (21M+ monthly listeners) and **JVKE** (19M+ monthly listeners) using these exact compliant methods.\n\nYour music career is safe with us. "
+    response: " **Organic & Compliant Promotion**\n\n•  Promotion reaches genre-matched listeners through channels and communities\n•  Fully **ToS-compliant** with Spotify, SoundCloud & all platforms\n•  Campaigns are designed to keep your artist profile safe\n•  Engagement from genuine genre-matched audiences\n•  **1,400+ artists** served worldwide\n\nWe've grown artists like **d4vd** (21M+ monthly listeners) and **JVKE** (19M+ monthly listeners) using these exact compliant methods.\n\nYour music career is safe with us. "
   },
   {
     key: 'order',
@@ -65,7 +65,7 @@ const KB = [
   {
     key: 'contact',
     patterns: ['contact', 'email', 'support', 'reach you', 'talk to', 'speak to', 'human', 'team', 'customer service', 'help me'],
-    response: " **Contact Echorise Media**\n\nOur team responds to every message within **24 hours**.\n\n **Email:** support@echorisemedia.com\n **Website:** echorisemedia.com\n **Contact Form:** echorisemedia.com/contact\n\nWe're a real team of music promotion professionals — not bots. Real people who love music and want to see your career grow. "
+    response: " **Contact Echorise Media**\n\nOur team responds to every message within **24 hours**.\n\n **Email:** support@echorisemedia.com\n **Website:** echorisemedia.com\n **Contact Form:** echorisemedia.com/contact\n\nWe're a team of music promotion professionals who love music and want to see your career grow. "
   },
   {
     key: 'platforms',
@@ -80,7 +80,7 @@ const KB = [
   {
     key: 'newartist',
     patterns: ['new artist', 'beginner', 'just starting', 'starting out', 'first time', 'brand new', 'no followers', 'small artist', 'unknown', 'grow my music'],
-    response: " **Best Package for New Artists**\n\nWelcome! Here's our recommendation:\n\n** Start with Spotify Growth — $120**\n• 25,000 real, targeted Audiences\n• Curator and playlist outreach — helps real listeners discover your music organically\n• Detailed analytics so you see real results\n• Campaign live within 48hrs\n\n**Why Growth over Starter?**\nA 25,000 audience gives your track a wider base of real listeners, which can support continued organic discovery after the campaign ends.\n\n**After your first campaign, consider:**\n• SoundCloud Growth ($120) — build community\n• Dance/TikTok 30s ($300) — creator-led reach\n\nMany artists start at $120 and scale up from there. \n\nReady to place your first order?"
+    response: " **Best Package for New Artists**\n\nWelcome! Here's our recommendation:\n\n** Start with Spotify Growth — $120**\n• Promotion to 25,000 targeted listeners\n• Curator and playlist outreach — helps listeners discover your music organically\n• Detailed analytics so you see real results\n• Campaign live within 48hrs\n\n**Why Growth over Starter?**\nA 25,000 listener reach gives your track a wider base of listeners, which can support continued organic discovery after the campaign ends.\n\n**After your first campaign, consider:**\n• SoundCloud Growth ($120) — build community\n• Dance/TikTok 30s ($300) — creator-led reach\n\nMany artists start at $120 and scale up from there. \n\nReady to place your first order?"
   },
   {
     key: 'invoice',
@@ -100,7 +100,7 @@ const KB = [
   {
     key: 'analytics',
     patterns: ['analytics', 'report', 'stats', 'statistics', 'data', 'tracking', 'see results', 'metrics', 'how will i know'],
-    response: " **Campaign Analytics & Reporting**\n\n**During your campaign:**\n• Real-time growth visible in your Spotify for Artists / SoundCloud dashboard\n• You can watch your numbers climb in real time \n\n**After your campaign:**\n• Detailed analytics report delivered to your email:\n  - Total listeners delivered\n  - Geographic breakdown\n  - Genre targeting accuracy\n  - Stream performance data\n\nGrowth and Premium packages include the most detailed reporting."
+    response: " **Campaign Analytics & Reporting**\n\n**During your campaign:**\n• Real-time growth visible in your Spotify for Artists / SoundCloud dashboard\n• You can watch your numbers climb in real time \n\n**After your campaign:**\n• Detailed analytics report delivered to your email:\n  - Total listeners reached\n  - Geographic breakdown\n  - Genre targeting accuracy\n  - Listener performance data\n\nGrowth and Premium packages include the most detailed reporting."
   },
   {
     key: 'press',
@@ -109,13 +109,13 @@ const KB = [
   }
 ]
 
-const FALLBACK = "Thanks for your message! \n\nI want to make sure you get the right answer. I can help with:\n\n•  Spotify, SoundCloud, Dance & YouTube packages\n•  Pricing & payment methods\n•  How to place an order\n•  Whether our promotion is safe & real\n•  How to contact our team\n\nOr reach us directly:\n **support@echorisemedia.com** — we reply within 24 hours!\n\nWhat would you like to know?"
+const FALLBACK = "Thanks for your message! \n\nI want to make sure you get the right answer. I can help with:\n\n•  Spotify, SoundCloud, Dance & YouTube packages\n•  Pricing & payment methods\n•  How to place an order\n•  Whether our promotion is safe & organic\n•  How to contact our team\n\nOr reach us directly:\n **support@echorisemedia.com** — we reply within 24 hours!\n\nWhat would you like to know?"
 
 const QUICK_QUESTIONS = [
   { label: "Best package for a new artist?", key: 'newartist' },
   { label: "Spotify promotion prices?", key: 'spotify' },
   { label: "See all packages & prices", key: 'pricing' },
-  { label: "Are listeners real? Is it safe?", key: 'real' },
+  { label: "Is your promotion safe and organic?", key: 'real' },
   { label: "How do I pay?", key: 'payment' },
   { label: "Dance / TikTok packages?", key: 'dance' },
 ]

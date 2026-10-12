@@ -144,7 +144,7 @@ export default function SuccessPage() {
         <div className="glass-card p-7 mt-8">
           <h4 className="font-display font-semibold text-gray-900 mb-4">What Happens Next?</h4>
           <div className="flex flex-col gap-3">
-            {[['24–72 hrs','Our team reviews your track and begins campaign setup.'],['Week 1','Your track is promoted to targeted channels and real listeners.'],['Week 2–3','Listen counts, saves, and engagement grow organically.'],['Campaign End','You receive a detailed analytics report with all campaign data.']].map(([time, desc]) => (
+            {[['24–72 hrs','Our team reviews your track and begins campaign setup.'],['Week 1','Your track is promoted to targeted channels and genre-matched listeners.'],['Week 2–3','Listen counts, saves, and engagement grow organically.'],['Campaign End','You receive a detailed analytics report with all campaign data.']].map(([time, desc]) => (
               <div key={time} className="flex gap-3 text-sm">
                 <span className="font-display font-semibold text-pink flex-shrink-0 w-20">{time}</span>
                 <span className="text-muted">{desc}</span>

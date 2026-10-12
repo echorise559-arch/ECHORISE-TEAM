@@ -55,15 +55,15 @@ const ShieldIcon = () => (
 /* ── Data ────────────────────────────────────────────────────────── */
 const FEATURES = [
   { icon: <TargetIcon />,    color: '#1DB954', title: 'Genre-Matched Targeting',   desc: 'We place your track with listeners who actively seek out your specific genre and sub-genre — not generic music fans.' },
-  { icon: <NetworkIcon />,   color: '#1DB954', title: 'Targeted Channel Network',  desc: 'Access to 500+ active music channels across all major genres. Real placements, real visibility.' },
+  { icon: <NetworkIcon />,   color: '#1DB954', title: 'Targeted Channel Network',  desc: 'Access to 500+ active music channels across all major genres. Placements that put your music in front of engaged listeners.' },
   { icon: <AlgorithmIcon />, color: '#1DB954', title: 'Curator & Playlist Outreach',   desc: "Your track is pitched to real curators and listener communities, so genuine engagement can lead to organic recommendations." },
   { icon: <GlobeIcon />,     color: '#1DB954', title: 'Geographic Targeting',      desc: 'Reach listeners in specific markets — UK, USA, Nigeria, Germany, or wherever your target audience lives.' },
   { icon: <TrendingUpIcon />,color: '#1DB954', title: 'Detailed Analytics',        desc: 'Campaign-end report with real Spotify for Artists data showing listener growth, save rates, and audience engagement.' },
-  { icon: <ShieldIcon />,    color: '#1DB954', title: 'Safe & Compliant',          desc: "Fully compliant with Spotify's Terms of Service. We never use bots, VPNs, or anything that puts your account at risk." },
+  { icon: <ShieldIcon />,    color: '#1DB954', title: 'Safe & Compliant',          desc: "Fully compliant with Spotify's Terms of Service. Every campaign is built to keep your artist profile safe." },
 ]
 
 export default function SpotifyPage() {
-  useSEO({ title: 'Spotify Promotion | Echorise Media — Real Listeners, No Bots', description: 'Get real Spotify listeners with Echorise Media. Targeted campaigns, genre-matched audiences and curator and playlist outreach. Safe, compliant and effective. From $50.', canonical: 'https://echorisemedia.com/spotify' })
+  useSEO({ title: 'Spotify Promotion | Echorise Media — Targeted, Organic Promotion', description: 'Promote your music to targeted Spotify listeners with Echorise Media. Genre-matched campaigns, genre-matched audiences and curator and playlist outreach. Safe, compliant and effective. From $50.', canonical: 'https://echorisemedia.com/spotify' })
   const [orderOpen, setOrderOpen] = useState(false)
   const [orderPkg, setOrderPkg] = useState('')
   const [spotifyOpen, setSpotifyOpen] = useState(false)
@@ -75,7 +75,7 @@ export default function SpotifyPage() {
       <PageHero
         label="Spotify Promotion"
         title={<>Grow Your Spotify<br /><span className="grad-text-spotify">The Right Way</span></>}
-        subtitle="Targeted listener campaigns, organic channel placements, and curator and playlist outreach. No bots. No risk. Just real listeners who actually engage."
+        subtitle="Targeted listener campaigns, organic channel placements, and curator and playlist outreach, built to put your music in front of listeners who actually engage."
         accent="#1DB954"
         image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&h=700&fit=crop&crop=center"
       >
@@ -93,7 +93,7 @@ export default function SpotifyPage() {
             <h2 className="font-display font-bold text-3xl mb-3" style={{ color: '#1A1A1A', letterSpacing: '-0.02em' }}>Simple Process. <span className="grad-text">Real Results.</span></h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[['01','Submit Your Track','Send us your Spotify link and campaign details via the order form.'],['02','Strategy Planning','Our team maps out the optimal targeting strategy and listener demographics for your sound.'],['03','Campaign Launch','We begin targeted promotion and sharing your track with real listeners.'],['04','Report & Grow','Receive a detailed analytics report and watch your Spotify for Artists stats climb.']].map(([num, title, desc]) => (
+            {[['01','Submit Your Track','Send us your Spotify link and campaign details via the order form.'],['02','Strategy Planning','Our team maps out the optimal targeting strategy and listener demographics for your sound.'],['03','Campaign Launch','We begin targeted promotion and sharing your track with targeted listeners.'],['04','Report & Grow','Receive a detailed analytics report and watch your Spotify for Artists stats climb.']].map(([num, title, desc]) => (
               <div key={num} className="glass-card p-6 relative">
                 <div className="font-display font-black text-5xl mb-3 grad-text" style={{ opacity: 0.25 }}>{num}</div>
                 <h3 className="font-display font-bold mb-2" style={{ color: '#1A1A1A' }}>{title}</h3>
@@ -132,7 +132,7 @@ export default function SpotifyPage() {
           <div className="text-center mb-14">
             <span className="section-label">Pricing</span>
             <h2 className="font-display font-bold text-3xl mb-3" style={{ color: '#1A1A1A', letterSpacing: '-0.02em' }}>Transparent <span className="grad-text">Pricing</span></h2>
-            <p style={{ color: '#6B6B6B' }}>No hidden fees. No fake numbers. Pick the package that fits your goals.</p>
+            <p style={{ color: '#6B6B6B' }}>No hidden fees. Clear pricing. Pick the package that fits your goals.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {SPOTIFY_PACKAGES.map(pkg => <PricingCard key={pkg.id} pkg={pkg} onOrder={openOrder} />)}

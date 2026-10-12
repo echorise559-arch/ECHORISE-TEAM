@@ -7,7 +7,7 @@ export default function NotFound() {
       <div className="relative z-10">
         <div className="font-display font-black text-8xl grad-text mb-4">404</div>
         <h1 className="font-display font-bold text-3xl mb-4" style={{ color: '#1A1A1A' }}>Track Not Found</h1>
-        <p className="mb-8 max-w-sm" style={{ color: '#6B6B6B' }}>Even the best algorithms miss sometimes. Let's get you back on track.</p>
+        <p className="mb-8 max-w-sm" style={{ color: '#6B6B6B' }}>Even the best playlists skip a track sometimes. Let's get you back on track.</p>
         <Link to="/" className="btn-primary">← Back to Home</Link>
       </div>
     </div>

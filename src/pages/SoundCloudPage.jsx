@@ -34,13 +34,13 @@ const TargetIcon = () => (
 
 /* ── Data ────────────────────────────────────────────────────────── */
 const FEATURES = [
-  { icon: <MusicNoteIcon />, title: 'Real Plays & Reposts',  desc: 'Every play and repost comes from genuine SoundCloud users. No fake accounts, no bots.' },
+  { icon: <MusicNoteIcon />, title: 'Plays & Reposts',  desc: 'Your track is shared with engaged SoundCloud listeners and community reposters in your genre.' },
   { icon: <UsersIcon />,     title: 'Follower Growth',       desc: 'Build a loyal SoundCloud following that actually listens and engages with your content.' },
   { icon: <TargetIcon />,    title: 'Community Targeting',   desc: "We place your music in front of the SoundCloud community that already loves your genre." },
 ]
 
 export default function SoundCloudPage() {
-  useSEO({ title: 'SoundCloud Promotion | Echorise Media — Real Plays & Followers', description: 'Grow your SoundCloud with real plays, followers and reposts from genre-matched communities. Affordable SoundCloud promotion from $50. No bots, no fake accounts.', canonical: 'https://echorisemedia.com/soundcloud' })
+  useSEO({ title: 'SoundCloud Promotion | Echorise Media — Plays, Followers & Reposts', description: 'Grow your SoundCloud with genre-matched promotion, followers and reposts from engaged communities. Affordable SoundCloud promotion from $50.', canonical: 'https://echorisemedia.com/soundcloud' })
   const [orderOpen, setOrderOpen] = useState(false)
   const [orderPkg, setOrderPkg] = useState('')
   const [customOpen, setCustomOpen] = useState(false)

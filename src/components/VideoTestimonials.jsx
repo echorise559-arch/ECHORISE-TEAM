@@ -100,13 +100,13 @@ const ORGANIC_POINTS = [
   },
   {
     Icon: ShieldCheck,
-    title: 'No bots. No artificial streaming.',
-    text: 'We never use bot accounts, stream farms or purchased plays. They put your artist profile at risk and they are not what the artists in these videos paid for.',
+    title: 'Promotion you can stand behind',
+    text: 'Every campaign follows platform guidelines and is built to keep your artist profile healthy for the long run.',
   },
   {
     Icon: BarChart3,
     title: 'Check it in your own data',
-    text: 'Organic growth is visible in your analytics: listeners from varied locations, saves, follows and playlist adds, not one flat wall of plays.',
+    text: 'Organic growth is visible in your analytics: listeners from varied locations, saves, follows and playlist adds.',
   },
 ]
 
@@ -133,7 +133,7 @@ export default function VideoTestimonials() {
             style={{ background: 'rgba(29,185,84,0.10)', border: '1.5px solid rgba(29,185,84,0.30)', color: '#14873D' }}
           >
             <ShieldCheck size={16} strokeWidth={2.2} aria-hidden="true" />
-            100% Organic Outreach · No Bots
+            100% Organic Outreach
           </div>
         </div>
 

@@ -33,17 +33,17 @@ const TrendingUpIcon = () => (
 )
 
 const FEATURES = [
-  { icon: <AppleMusicIcon />, title: 'Apple Music Streams', desc: 'Reach genuine Apple Music listeners in your target markets and genres.' },
+  { icon: <AppleMusicIcon />, title: 'Apple Music Listeners', desc: 'Promote your music to Apple Music listeners in your target markets and genres.' },
   { icon: <ClipboardList size={22} strokeWidth={2} />, title: 'Playlist Pitching', desc: 'We pitch your track to Apple Music curators for editorial playlist consideration.' },
   { icon: <BarChartIcon />, title: 'Shazam Discovery', desc: 'Strategic placements that put your track in front of people who use Shazam to discover music.' },
   { icon: <GlobeIcon />, title: 'Geographic Targeting', desc: 'Target listeners in specific countries where your sound resonates most strongly.' },
   { icon: <Bell size={22} strokeWidth={2} />, title: 'New Artist Spotlight', desc: 'Eligible artists get pitched to Apple\'s New Artist Spotlight editorial team.' },
-  { icon: <TrendingUpIcon />, title: 'Analytics Report', desc: 'Full Apple Music for Artists report showing stream growth, listener territories, and more.' },
+  { icon: <TrendingUpIcon />, title: 'Analytics Report', desc: 'Full Apple Music for Artists report showing listener growth, territories, and more.' },
 ]
 
 const HOW_IT_WORKS = [
   ['01', 'Submit Your Track', 'Share your Apple Music link and tell us your campaign goals and target markets.'],
-  ['02', 'Campaign Strategy', 'We plan playlist pitching, stream campaigns, and Shazam targeting around your track.'],
+  ['02', 'Campaign Strategy', 'We plan playlist pitching, audience campaigns, and Shazam targeting around your track.'],
   ['03', 'Campaign Launch', 'We begin promotion across Apple Music channels and editorial networks.'],
   ['04', 'Report & Grow', 'Receive a detailed report and watch your Apple Music for Artists stats grow.'],
 ]
@@ -58,7 +58,7 @@ export default function AppleMusicPage() {
       <PageHero
         label="Apple Music Promotion"
         title={<>Grow on<br /><span style={{ background: 'linear-gradient(135deg,#FC3C44,#fa233b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Apple Music</span></>}
-        subtitle="Real streams, playlist pitching, Shazam discovery campaigns, and Apple Music editorial targeting. Built for artists serious about the Apple ecosystem."
+        subtitle="Targeted audience promotion, playlist pitching, Shazam discovery campaigns, and Apple Music editorial targeting. Built for artists serious about the Apple ecosystem."
         accent="#FC3C44"
         image="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=900&h=700&fit=crop&crop=center"
       >
@@ -115,7 +115,7 @@ export default function AppleMusicPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
             {[
-              { range: '$50 – $200', label: 'Starter', desc: 'Build stream counts and Shazam chart presence for emerging artists.' },
+              { range: '$50 – $200', label: 'Starter', desc: 'Build your audience and Shazam presence as an emerging artist.' },
               { range: '$200 – $1,000', label: 'Growth', desc: 'Playlist pitching + listener campaign to support editorial consideration.' },
               { range: '$1,000 – $10,000', label: 'Premium', desc: 'Full editorial pitch, multi-market promotion, Shazam chart targeting and more.' },
             ].map(tier => (

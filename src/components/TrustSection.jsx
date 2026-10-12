@@ -7,8 +7,8 @@ import { ShieldCheck, RefreshCcw, BarChart3, Lock, Clock, MessageCircle } from '
 const COMMITMENTS = [
   {
     Icon: ShieldCheck,
-    title: 'Real listeners only',
-    text: 'Every listener is a real person with a genuine account. No bots, no fake accounts, no artificial plays.',
+    title: 'Genre-matched audiences',
+    text: 'Your music is promoted to listeners who love your genre, through channels and communities that fit your sound.',
   },
   {
     Icon: RefreshCcw,

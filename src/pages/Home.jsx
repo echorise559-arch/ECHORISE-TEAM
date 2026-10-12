@@ -13,6 +13,7 @@ import PartnerLogos from '../components/PartnerLogos'
 import TopArtists from '../components/TopArtists'
 import ArtistSpotlight from '../components/ArtistSpotlight'
 import VideoTestimonials from '../components/VideoTestimonials'
+import ArtistServicesSection from '../components/ArtistServicesSection'
 import CallPolicy from '../components/CallPolicy'
 import { SPOTIFY_PACKAGES, REVIEWS } from '../data'
 
@@ -115,9 +116,9 @@ const PressIcon = ({ size = 22 }) => (
 /* ── Data ─────────────────────────────────────────────────────────── */
 const SERVICES = [
   { icon: <SpotifyIcon />,    title: 'Spotify Promotion',    desc: 'Targeted listener campaigns and curator and playlist outreach that puts your track in front of people who actually engage.', to: '/spotify',    color: '#1DB954', bg: 'rgba(29,185,84,0.14)' },
-  { icon: <SoundCloudIcon />, title: 'SoundCloud Promotion', desc: "Build your SoundCloud presence from the ground up — real plays, followers, and reposts from your genre's core community.",  to: '/soundcloud', color: '#FF5500', bg: 'rgba(255,85,0,0.14)' },
+  { icon: <SoundCloudIcon />, title: 'SoundCloud Promotion', desc: "Build your SoundCloud presence from the ground up with promotion, followers, and reposts from your genre's core community.",  to: '/soundcloud', color: '#FF5500', bg: 'rgba(255,85,0,0.14)' },
   { icon: <DanceIcon />,      title: 'Dance & TikTok Promo',  desc: 'Real creators on TikTok and Instagram Reels making authentic content around your track — the kind that sparks viral moments.',  to: '/dance',      color: '#4B3F72', bg: 'rgba(75,63,114,0.08)' },
-  { icon: <YouTubeIcon />,    title: 'YouTube Promotion',     desc: 'Grow your channel with real views, subscribers, and watch-time campaigns built on genuine viewers who choose to watch.', to: '/youtube',  color: '#FF0000', bg: 'rgba(255,0,0,0.08)' },
+  { icon: <YouTubeIcon />,    title: 'YouTube Promotion',     desc: 'Grow your channel by promoting your videos to viewers who love your genre, with campaigns built around views, subscribers, and watch time.', to: '/youtube',  color: '#FF0000', bg: 'rgba(255,0,0,0.08)' },
   { icon: <AppleMusicIcon />, title: 'Apple Music Promotion', desc: "Get your tracks onto Apple Music playlists, climb the Shazam chart, and build a loyal listener base on one of the world's top platforms.", to: '/apple-music', color: '#FC3C44', bg: 'rgba(252,60,68,0.08)' },
   { icon: <PressIcon />,      title: 'Press Features',       desc: 'Get your story written and published on respected music and entertainment outlets, with links back to your music and a social post from each outlet.', to: '/press', color: '#FF6A00', bg: 'rgba(255,106,0,0.10)' },
 ]
@@ -147,7 +148,7 @@ const STATS = [
 const GENRES = ['Afrobeats','R&B','Hip-Hop','Electronic','Pop','Amapiano','Dancehall','Drill','Lo-Fi','House','Soul','Jazz Fusion','Trap','Latin','Alternative','Indie','UK Rap','Techno']
 
 export default function Home() {
-  useSEO({ title: 'Echorise Media | #1 Music Promotion Studio — Spotify, SoundCloud, YouTube & More', description: 'Real listeners. Real results. Echorise Media promotes your music on Spotify, SoundCloud, YouTube, Apple Music, TikTok & more worldwide. 1,400+ artists promoted. 50M+ listens reached.', canonical: 'https://echorisemedia.com/' })
+  useSEO({ title: 'Echorise Media | #1 Music Promotion Studio — Spotify, SoundCloud, YouTube & More', description: 'Targeted promotion. Real results. Echorise Media promotes your music on Spotify, SoundCloud, YouTube, Apple Music, TikTok & more worldwide. 1,400+ artists promoted. 50M+ listens reached.', canonical: 'https://echorisemedia.com/' })
   const [orderOpen, setOrderOpen] = useState(false)
   const [orderPreselect, setOrderPreselect] = useState('')
   const [spotifyOpen, setSpotifyOpen] = useState(false)
@@ -181,12 +182,12 @@ export default function Home() {
 
               <h1 className="font-display font-bold mb-6"
                 style={{ fontSize: 'clamp(2.8rem,6vw,5rem)', lineHeight: 1.06, letterSpacing: '-0.03em', color: '#1A1A1A', fontFamily: 'Syne, sans-serif' }}>
-                Your Music Deserves<br />
-                <span className="grad-text">More Than an Algorithm</span>
+                Get Heard By<br />
+                <span className="grad-text">Your Next Fans</span>
               </h1>
 
               <p className="text-lg max-w-xl mb-10 leading-relaxed" style={{ color: '#6B6B6B' }}>
-                We don't just share your track — we plan its rise. Echorise Media connects your music with real listeners, real channels, and real momentum on the platforms that define careers.
+                We don't just share your track, we plan its rise. Echorise Media promotes and advertises your music to listeners who love your genre, through the channels and communities that matter most.
               </p>
 
               <div className="flex gap-4 flex-wrap mb-12">
@@ -254,7 +255,7 @@ export default function Home() {
           <div className="max-w-xl mb-14">
             <span className="section-label">What We Do</span>
             <h2 className="font-display font-bold text-5xl mb-4" style={{ color: '#1A1A1A', letterSpacing: '-0.02em', fontFamily: 'Syne, sans-serif' }}>Promotion That <span className="grad-text">Actually Works</span></h2>
-            <p style={{ color: '#6B6B6B' }}>Every campaign is tailored to your sound, your audience, and your goals. No bots. No shortcuts. No excuses.</p>
+            <p style={{ color: '#6B6B6B' }}>Every campaign is tailored to your sound, your audience, and your goals. Clear plans, honest reporting, and promotion that fits your music.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICES.map(s => (
@@ -318,6 +319,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── ARTIST SERVICES ($5 / $10) ── */}
+      <ArtistServicesSection />
+
       {/* ── VIDEO TESTIMONIALS (directly after the first package list) ── */}
       <VideoTestimonials />
 
@@ -361,11 +365,11 @@ export default function Home() {
               Echorise Media was built because real artists deserve real results. We understand the struggle of getting your sound heard in a saturated world — so we built a system that actually works.
             </p>
             <p className="mb-8 leading-relaxed" style={{ color: '#6B6B6B' }}>
-              We connect your music directly to real, engaged audiences who genuinely love your genre — across the world's biggest streaming platforms.
+              We promote your music directly to engaged audiences who genuinely love your genre, across the world's biggest streaming platforms.
             </p>
             <div className="flex flex-col gap-3">
               {[
-                ['100% real listeners — no bots, no fake streams',          '#1DB954'],
+                ['100% organic, genre-targeted promotion',          '#1DB954'],
                 ['Genre-targeted campaigns reaching the right audience',    '#FF6A00'],
                 ['Campaigns live within 24 to 72 hours of payment',              '#4B3F72'],
                 ['Full analytics report delivered at campaign end',         '#FF6A00'],

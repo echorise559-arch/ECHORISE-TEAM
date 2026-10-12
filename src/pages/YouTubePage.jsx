@@ -38,23 +38,23 @@ const ShieldIcon = () => (
 )
 
 const FEATURES = [
-  { icon: <PlayIcon />, title: 'Real YouTube Views', desc: 'Reach genuine viewers on YouTube, building real watch time, engagement, and channel authority.' },
+  { icon: <PlayIcon />, title: 'Targeted Viewers', desc: 'Promote your videos to viewers who love your genre, building watch time, engagement, and channel authority.' },
   { icon: <TrendingUpIcon />, title: 'Subscriber Growth', desc: 'Grow your subscriber base with targeted campaigns reaching fans who love your music genre.' },
   { icon: <TargetIcon />, title: 'Audience Targeting', desc: 'Target viewers by genre, region, age, and listening habits for maximum engagement rates.' },
-  { icon: <Bell size={22} strokeWidth={2} />, title: 'Algorithm Signals', desc: 'Strategic watch patterns that signal strong content quality to the YouTube algorithm.' },
+  { icon: <Bell size={22} strokeWidth={2} />, title: 'Audience Engagement', desc: 'Promotion that brings in viewers who watch, like, and comment, helping your content find its audience.' },
   { icon: <BarChartIcon />, title: 'Analytics Report', desc: 'Detailed campaign report showing view growth, retention rates, and channel improvements.' },
-  { icon: <ShieldIcon />, title: 'ToS Compliant', desc: 'Fully compliant with YouTube\'s guidelines. No bots, no click farms — only real engagement.' },
+  { icon: <ShieldIcon />, title: 'ToS Compliant', desc: 'Fully compliant with YouTube\'s guidelines. Your channel stays safe throughout every campaign.' },
 ]
 
 const HOW_IT_WORKS = [
   ['01', 'Submit Your Video', 'Share your YouTube link and tell us your goals — more views, subscribers, or both.'],
   ['02', 'Campaign Strategy', 'We map out the best targeting approach based on your genre, region, and audience.'],
-  ['03', 'Campaign Launch', 'We start sharing your video with real viewers through strategic promotion.'],
+  ['03', 'Campaign Launch', 'We start sharing your video with targeted viewers through strategic promotion.'],
   ['04', 'Growth & Report', 'Watch your channel stats grow and receive a full analytics report at campaign end.'],
 ]
 
 export default function YouTubePage() {
-  useSEO({ title: 'YouTube Music Promotion | Echorise Media — Real Views & Subscribers', description: 'Grow your YouTube channel with real views, subscribers and watch-time campaigns. Echorise Media promotes your video to real viewers who choose to watch.', canonical: 'https://echorisemedia.com/youtube' })
+  useSEO({ title: 'YouTube Music Promotion | Echorise Media — Video Promotion & Subscriber Growth', description: 'Grow your YouTube channel with targeted video promotion, subscriber growth and watch-time campaigns. Echorise Media promotes your video to viewers who choose to watch.', canonical: 'https://echorisemedia.com/youtube' })
   const [orderOpen, setOrderOpen] = useState(false)
   const [customOpen, setCustomOpen] = useState(false)
 
@@ -63,7 +63,7 @@ export default function YouTubePage() {
       <PageHero
         label="YouTube Promotion"
         title={<>Grow Your YouTube<br /><span style={{ background: 'linear-gradient(135deg,#FF0000,#cc0000)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Channel</span></>}
-        subtitle="Real views, real subscribers, and genuine audience building. No bots. No risk. Just genuine growth that builds your YouTube presence."
+        subtitle="Targeted video promotion, subscriber growth, and genuine audience building. Steady, organic growth that builds your YouTube presence."
         accent="#FF0000"
         image="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&h=700&fit=crop&crop=center"
       >
